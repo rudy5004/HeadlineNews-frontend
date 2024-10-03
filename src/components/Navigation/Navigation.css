@@ -1,0 +1,26 @@
+/* Navigation.css */
+.navigation {
+  display: flex;
+  gap: 20px;
+}
+
+.navigation__link {
+  color: #000;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navigation__link:hover {
+  text-decoration: underline;
+}
+
+.navigation__link--profile {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__icon {
+  margin-left: 8px;
+}

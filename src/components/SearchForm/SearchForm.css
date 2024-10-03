@@ -1,0 +1,40 @@
+.search-form {
+  display: flex;
+  width: 100%;
+  max-width: 608px; /* Set width to 608px */
+  height: 64px; /* Set height to 64px */
+  margin-bottom: 80px;
+  border-radius: 100px; /* Full rounded corners */
+  position: relative; /* Allow overlapping elements inside */
+}
+
+.search-form__input {
+  flex: 1;
+  height: 64px; /* Set the input height to 64px */
+  padding-left: 24px; /* Add padding to the left to move placeholder 24px */
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  border: none; /* Remove individual borders from input */
+  outline: none;
+  border-radius: 100px; /* Ensure input has rounded corners */
+}
+
+.search-form__button {
+  position: absolute; /* Position the button to overlap the input */
+  right: 0;
+  width: 168px; /* Set width to 168px */
+  height: 67px; /* Set height to match the search form */
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 100px; /* Ensure button has rounded corners */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the button text */
+}
+
+.search-form__button:hover {
+  background-color: #0056b3;
+}

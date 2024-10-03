@@ -1,0 +1,49 @@
+.about {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 1000px;
+}
+
+.about__image {
+  border-radius: 50%;
+  width: 464px;
+  height: 464px;
+  object-fit: cover;
+  margin: 80px 56px 80px 104px;
+}
+
+/* Container for the info section */
+.about__info {
+  margin-top: 131px;
+}
+
+/* Container for the title */
+.about__title-container {
+  margin-bottom: 24px;
+}
+
+/* Title styling */
+.about__title {
+  font-size: 40px;
+  font-family: "Roboto", sans-serif;
+  line-height: 46px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Container for the text */
+.about__text-container {
+  width: 600px; /* Set the width for the text container */
+  text-align: left;
+}
+
+/* Text styling */
+.about__text {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 1);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
