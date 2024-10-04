@@ -10,7 +10,7 @@
   position: relative;
 }
 
-/* Center the modal with a background overlay */
+/* Center the modal */
 .popup {
   position: fixed;
   top: 50%;
@@ -21,12 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.3
-  ); /* Lighter semi-transparent dark overlay */
+  background-color: rgba(0, 0, 0, 0.5); /* Background overlay */
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
@@ -76,16 +71,11 @@
   font-weight: 400;
   line-height: 17px;
   width: 100%;
+  margin-bottom: 31px; /* Consistent margin */
 }
 
-/* Set margin for the first input field */
-.popup__input:nth-of-type(1) {
-  margin-bottom: 31px; /* Set margin of 31px for the first input */
-}
-
-/* Set margin for the second input field */
-.popup__input:nth-of-type(2) {
-  margin-bottom: 39px; /* Set margin of 39px for the second input */
+.popup__input:last-of-type {
+  margin-bottom: 39px; /* Custom margin for last input */
 }
 
 .popup__input::placeholder {
@@ -101,8 +91,8 @@
   color: rgba(255, 0, 0, 1); /* Red color */
   margin-top: 3px; /* 3px space between the input and error */
   position: absolute; /* Positioned inside the input wrapper */
-  top: 158px;
-  left: 36px; /* Align error message with input */
+  top: calc(100% + 3px); /* 3px below the input field */
+  left: 0; /* Align error message with input */
 }
 
 /* Label styling */
