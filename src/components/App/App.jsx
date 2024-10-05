@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "../Main/Main"; // Main page component
 import Footer from "../Footer/Footer"; // Footer component
 import SavedNews from "../SavedNews/SavedNews"; // Saved news page component
+import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader"; // Saved news header component
 import "./App.css";
 
 function App() {
@@ -30,11 +31,18 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          {/* This route should point to "/" to load the Main component */}
+          {/* Main page */}
           <Route path="/" element={<Main />} />
+
+          {/* Saved news page with SavedNewsHeader above SavedNews */}
           <Route
             path="/saved-news"
-            element={<SavedNews user={user} savedArticles={savedArticles} />}
+            element={
+              <>
+                <SavedNewsHeader user={user} />
+                <SavedNews user={user} savedArticles={savedArticles} />
+              </>
+            }
           />
         </Routes>
         <Footer />

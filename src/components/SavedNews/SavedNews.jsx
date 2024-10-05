@@ -1,5 +1,4 @@
 import React from "react";
-import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCardList from "../NewsCardList/NewsCardList";
 
 function SavedNews({ user, savedArticles }) {
@@ -7,11 +6,7 @@ function SavedNews({ user, savedArticles }) {
 
   return (
     <div className="saved-news">
-      <SavedNewsHeader
-        name={user.name}
-        savedArticles={savedArticles}
-        keywords={[...new Set(keywords)]} // Unique keywords
-      />
+      {/* Removed SavedNewsHeader */}
       <NewsCardList articles={savedArticles} />
     </div>
   );
