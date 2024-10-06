@@ -5,9 +5,12 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  position: relative; /* Important for absolute positioning of the delete button */
+  padding: 0;
+  position: relative; /* Important for absolute positioning of the delete button and source */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .news-card:hover {
@@ -15,7 +18,68 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Keyword Box */
+/* Image Styling */
+.news-card__image {
+  width: 100%;
+  height: 272px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Date Styling */
+.news-card__date {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(182, 188, 191, 1); /* Correct usage of color */
+  margin-bottom: 12px; /* Spacing between date and title */
+  margin-top: 0px;
+}
+
+/* Title Styling */
+.news-card__title {
+  font-family: "Roboto Slab", serif; /* Use Roboto Slab */
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 16px; /* Spacing between title and description */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ensures text is trimmed with an ellipsis if overflowing */
+  white-space: normal; /* Allows text to wrap */
+  word-wrap: break-word; /* Breaks long words if necessary */
+  word-break: break-word; /* Ensures long words are broken at appropriate break points */
+}
+
+/* Description Styling */
+.news-card__description {
+  font-family: "Roboto", sans-serif; /* Use Roboto */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 40px; /* Spacing between description and source */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  margin-top: 0px;
+}
+
+/* Source Styling */
+.news-card__source {
+  color: rgba(182, 188, 191, 1); /* Correct usage of color */
+  font-family: "Roboto Slab", serif; /* Use Roboto Slab */
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-align: left;
+  position: absolute; /* Ensure it's always at the bottom left */
+  bottom: 24px; /* 24px from the bottom */
+  left: 24px; /* 24px from the left */
+  margin: 0;
+}
+
+/* Keyword Box Styling */
 .news-card__keyword {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -23,57 +87,59 @@
   line-height: 24px;
   color: rgba(26, 27, 34, 1);
   background-color: rgba(26, 27, 34, 0.1);
-  width: 87px; /* Fixed width */
-  height: 40px; /* Fixed height */
+  padding: 5px 16px;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 16px; /* Padding inside */
-  margin-bottom: 10px; /* Margin for space below */
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
-/* Absolute positioning of the delete button container */
+/* Delete Button Styling */
 .news-card__delete-container {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  display: flex; /* Using flexbox for alignment */
+  top: 20px;
+  right: 20px;
+  display: flex;
   align-items: center;
-  gap: 5px; /* Gap between elements */
+  gap: 5px;
 }
 
-/* Delete button */
 .news-card__delete-button {
-  width: 40px; /* Set the size to 40x40 */
+  width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
-/* Pop-up box for "Remove from saved" text */
 .news-card__remove-text {
   position: absolute;
-  top: 0; /* Align it vertically with the delete button */
-  right: 35px; /* Position it to the left of the delete button */
-  width: 159px; /* Set width to 159px */
-  height: 40px; /* Set height to 40px */
-  background-color: white; /* White background */
-  border-radius: 5px; /* Optional border radius */
-  display: flex; /* Flexbox for centering text */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  top: 0;
+  right: 35px;
+  width: 159px;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  line-height: 14.06px;
+  line-height: 14px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Show the pop-up text on hover */
 .news-card__delete-container:hover .news-card__remove-text {
-  opacity: 1; /* Show on hover */
+  opacity: 1;
+}
+
+/* Content Styling for the News Card */
+.news-card__content {
+  padding: 17px 24px 24px; /* Padding: top 17px, right 24px, bottom 24px, left 24px */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows the content to fill the space */
+  justify-content: space-between; /* Distribute space between title/description and source */
 }

@@ -12,9 +12,17 @@ function NewsCard({ article }) {
       onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
       onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
     >
+      {/* Header */}
       <div className="news-card__header">
         <span className="news-card__keyword">{article.keyword}</span>
       </div>
+
+      {/* Image */}
+      <img
+        src={article.imageUrl}
+        alt={article.title}
+        className="news-card__image"
+      />
 
       {/* Delete button container */}
       <div className="news-card__delete-container">
@@ -28,8 +36,19 @@ function NewsCard({ article }) {
         />
       </div>
 
+      {/* Content */}
       <div className="news-card__content">
+        {/* Date */}
+        <p className="news-card__date">{article.publishedAt}</p>
+
+        {/* Title */}
         <h3 className="news-card__title">{article.title}</h3>
+
+        {/* Description */}
+        <p className="news-card__description">{article.description}</p>
+
+        {/* Source */}
+        <p className="news-card__source">{article.source.name}</p>
       </div>
     </div>
   );
