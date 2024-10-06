@@ -24,7 +24,7 @@
 .saved-news-header__menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 76px; /* Set gap to 76px between menu items */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -41,18 +41,15 @@
   display: inline-block;
 }
 
-/* Proportional underline for Saved articles */
-.saved-news-header__link--active::after {
-  content: "";
-  display: block;
+.saved-news-header__underline {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120%;
   height: 2px;
+  width: 133px;
   background-color: rgba(26, 27, 34, 1);
-  bottom: 0;
   margin-top: 2px;
+  transform: translateX(-50%);
+  right: 200px;
+  top: 72px;
 }
 
 /* Remove underline for Home link */
@@ -87,7 +84,7 @@
 .saved-news-header__horizontal-line {
   position: absolute;
   left: 0;
-  width: 100vw;
+  width: 113;
   height: 1px;
   background-color: rgba(26, 27, 34, 0.3);
   margin-top: 16px;

@@ -33,6 +33,8 @@ function SavedNewsHeader({ user }) {
               >
                 Saved articles
               </Link>
+              {/* Underline for "Saved articles" */}
+              <div className="saved-news-header__underline" />
             </li>
           </ul>
 
@@ -43,7 +45,6 @@ function SavedNewsHeader({ user }) {
           </button>
         </div>
       </nav>
-      <div className="saved-news-header__horizontal-line"></div>
     </header>
   );
 }

@@ -3,8 +3,15 @@
   grid-template-columns: repeat(
     auto-fill,
     minmax(400px, 1fr)
-  ); /* Responsive columns */
-  gap: 5px; /* Fixed gap of 5px between each card (both rows and columns) */
-  justify-items: stretch; /* Ensures cards stretch to fill grid cells */
-  margin-top: 30px; /* Add margin to push it below "By keywords:" */
+  ); /* Allow cards to fill the row */
+  gap: 5px; /* Space between each card */
+  justify-items: stretch; /* Ensure cards stretch to fill grid cells */
+  background-color: rgba(209, 210, 214, 1); /* Light grayish-blue color */
+  padding-top: 62px; /* Add padding to increase background area */
+  padding-bottom: 62px;
+  padding-left: 104px; /* Add left padding for cards */
+  padding-right: 120px; /* Add right padding for cards */
+  margin-left: -104px; /* Negative margin to offset left padding */
+  margin-right: -104px; /* Negative margin to offset right padding */
+  width: calc(100% + 40px); /* Full width accounting for negative margins */
 }

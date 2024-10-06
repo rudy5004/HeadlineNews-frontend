@@ -25,6 +25,30 @@ function App() {
       description: "",
       source: { name: "" },
     },
+    {
+      title: "Article 3",
+      keyword: "Photography",
+      imageUrl: "",
+      publishedAt: "",
+      description: "",
+      source: { name: "" },
+    },
+    {
+      title: "Article 4",
+      keyword: "Wildlife",
+      imageUrl: "",
+      publishedAt: "",
+      description: "",
+      source: { name: "" },
+    },
+    {
+      title: "Article 5",
+      keyword: "Adventure",
+      imageUrl: "",
+      publishedAt: "",
+      description: "",
+      source: { name: "" },
+    },
   ]);
 
   return (

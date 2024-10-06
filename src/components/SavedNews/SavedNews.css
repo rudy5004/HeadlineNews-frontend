@@ -2,6 +2,7 @@
 .saved-news {
   padding: 20px;
   padding-left: 104px; /* Add left padding of 104px */
+  padding-right: 104px;
 }
 
 .saved-news__header {

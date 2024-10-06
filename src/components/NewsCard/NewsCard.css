@@ -1,5 +1,6 @@
+/* News Card Styling */
 .news-card {
-  width: 400px; /* Fixed width for each card */
+  max-width: 400px; /* Allow cards to take full width of the grid item */
   height: 576px; /* Fixed height for each card */
   background-color: white;
   border-radius: 8px;
@@ -7,7 +8,6 @@
   padding: 20px;
   position: relative; /* Important for absolute positioning of the delete button */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 16px; /* Adds gap between rows */
 }
 
 .news-card:hover {
