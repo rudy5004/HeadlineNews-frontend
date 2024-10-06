@@ -1,0 +1,49 @@
+/* Saved News CSS */
+.saved-news {
+  padding: 20px;
+  padding-left: 104px; /* Add left padding of 104px */
+}
+
+.saved-news__header {
+  margin-bottom: 20px;
+  margin-top: 120px; /* Move the header 120px down from the top */
+  text-align: left; /* Align all text to the left */
+}
+
+.saved-news__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+  margin-bottom: 28px; /* Add 28px bottom margin under "Saved articles" */
+}
+
+.saved-news__subheading {
+  font-family: "Roboto Slab", serif; /* Set font to Roboto Slab */
+  font-size: 40px; /* Font size 40px */
+  font-weight: 400; /* Font weight 400 */
+  line-height: 46px; /* Line height 46px */
+  text-align: left; /* Align text to the left */
+  margin-top: 10px;
+  margin-bottom: 30px; /* Add bottom margin of 30px under "articles" text */
+}
+
+.saved-news__description {
+  font-family: "Roboto", sans-serif; /* Set font to Roboto */
+  font-size: 18px; /* Font size 18px */
+  font-weight: 400; /* Font weight 400 */
+  line-height: 24px; /* Line height 24px */
+  text-align: left; /* Align text to the left */
+  color: gray;
+  margin-bottom: 56px; /* Add bottom margin of 56px under "By keywords" */
+}
+
+.saved-news__keyword {
+  font-family: "Roboto", sans-serif; /* Set font to Roboto */
+  font-size: 18px; /* Font size 18px */
+  font-weight: 700; /* Bold font for the keywords */
+  line-height: 24px; /* Line height 24px */
+  text-align: left; /* Align text to the left */
+  color: black; /* You can customize the color if needed */
+}

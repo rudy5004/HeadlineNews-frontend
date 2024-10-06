@@ -1,8 +1,10 @@
-/* NewsCardList.css */
-.news-card-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
+.cards-container {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(400px, 1fr)
+  ); /* Responsive columns */
+  gap: 5px; /* Fixed gap of 5px between each card (both rows and columns) */
+  justify-items: stretch; /* Ensures cards stretch to fill grid cells */
+  margin-top: 30px; /* Add margin to push it below "By keywords:" */
 }

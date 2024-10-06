@@ -1,47 +1,79 @@
-/* NewsCard.css */
 .news-card {
+  width: 400px; /* Fixed width for each card */
+  height: 576px; /* Fixed height for each card */
   background-color: white;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative; /* Important for absolute positioning of the delete button */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 16px; /* Adds gap between rows */
 }
 
-.news-card__image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.news-card__content {
-  padding: 15px;
-}
-
-.news-card__date {
-  font-size: 12px;
+/* Keyword Box */
+.news-card__keyword {
   font-family: "Roboto", sans-serif;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.news-card__title {
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.news-card__text {
+  font-weight: 500;
   font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  color: #555;
-  margin-bottom: 15px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 1);
+  background-color: rgba(26, 27, 34, 0.1);
+  width: 87px; /* Fixed width */
+  height: 40px; /* Fixed height */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 16px; /* Padding inside */
+  margin-bottom: 10px; /* Margin for space below */
 }
 
-.news-card__source {
-  font-size: 12px;
+/* Absolute positioning of the delete button container */
+.news-card__delete-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex; /* Using flexbox for alignment */
+  align-items: center;
+  gap: 5px; /* Gap between elements */
+}
+
+/* Delete button */
+.news-card__delete-button {
+  width: 40px; /* Set the size to 40x40 */
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Pop-up box for "Remove from saved" text */
+.news-card__remove-text {
+  position: absolute;
+  top: 0; /* Align it vertically with the delete button */
+  right: 35px; /* Position it to the left of the delete button */
+  width: 159px; /* Set width to 159px */
+  height: 40px; /* Set height to 40px */
+  background-color: white; /* White background */
+  border-radius: 5px; /* Optional border radius */
+  display: flex; /* Flexbox for centering text */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
   font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  color: #333;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.06px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for effect */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Show the pop-up text on hover */
+.news-card__delete-container:hover .news-card__remove-text {
+  opacity: 1; /* Show on hover */
 }

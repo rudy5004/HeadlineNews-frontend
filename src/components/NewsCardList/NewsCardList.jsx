@@ -1,13 +1,13 @@
 import React from "react";
-import NewsCard from "../NewsCard/NewsCard"; // Assuming you have NewsCard built
+import NewsCard from "../NewsCard/NewsCard"; // Import the NewsCard component
 
 function NewsCardList({ articles }) {
   return (
-    <section className="news-card-list">
-      {articles.map((article, index) => (
-        <NewsCard key={index} article={article} />
+    <div className="cards-container">
+      {articles.map((article) => (
+        <NewsCard key={article.id} article={article} /> // Pass each article to NewsCard
       ))}
-    </section>
+    </div>
   );
 }
 
