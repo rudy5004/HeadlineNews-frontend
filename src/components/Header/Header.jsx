@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import SignUpModal from "../SignUpModal/SignUpModal"; // Import the SignUpModal component
+import SignUpModal from "../SignUpModal/SignUpModal";
 import NewsExplorerLogo from "../../assets/NewsExplorer.svg";
-import MenuIcon from "../../assets/menu.svg"; // Import the menu icon
+import MenuIcon from "../../assets/menu.svg";
+import CloseIcon from "../../assets/close.svg";
 import "./Header.css";
 
 function Header() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
@@ -18,23 +19,23 @@ function Header() {
 
   const handleSignInPopupOpen = () => {
     setIsSignInPopupOpen(true);
-    setIsSignUpPopupOpen(false); // Ensure sign-up modal is closed
+    setIsSignUpPopupOpen(false);
   };
 
   const handleSignUpPopupOpen = () => {
     setIsSignUpPopupOpen(true);
-    setIsSignInPopupOpen(false); // Ensure sign-in modal is closed
+    setIsSignInPopupOpen(false);
   };
 
   const handlePopupClose = () => {
     setIsSignInPopupOpen(false);
     setIsSignUpPopupOpen(false);
-    setIsMenuOpen(false); // Close the menu when popups are closed
-    setEmailError(""); // Clear errors when popups are closed
+    setIsMenuOpen(false);
+    setEmailError("");
   };
 
   const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+    setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
@@ -78,7 +79,6 @@ function Header() {
     e.preventDefault();
     if (isFormValid) {
       handlePopupClose();
-      // Additional logic for form submission
     }
   };
 
@@ -101,6 +101,7 @@ function Header() {
           onClick={handleMenuToggle}
         />
 
+        {/* Main navigation links (visible by default, hidden in overlay) */}
         <ul
           className={`header__menu ${isMenuOpen ? "header__menu--open" : ""}`}
         >
@@ -110,23 +111,11 @@ function Header() {
               className={`header__link ${
                 location.pathname === "/" ? "header__link--active" : ""
               }`}
-              onClick={handleMenuToggle} // Close menu when Home is clicked
+              onClick={handleMenuToggle}
             >
               Home
             </Link>
           </li>
-
-          {location.pathname === "/saved-news" && (
-            <li className="header__item">
-              <Link
-                to="/saved-news"
-                className="header__link"
-                onClick={handleMenuToggle} // Close menu when Saved Articles is clicked
-              >
-                Saved articles
-              </Link>
-            </li>
-          )}
 
           <li className="header__item">
             <button
@@ -137,6 +126,38 @@ function Header() {
             </button>
           </li>
         </ul>
+
+        {/* Menu Overlay */}
+        {isMenuOpen && (
+          <div className="header__menu-overlay">
+            <img
+              src={CloseIcon}
+              alt="Close icon"
+              className="header__menu-close"
+              onClick={handleMenuToggle}
+            />
+            <ul className="header__menu">
+              <li className="header__item">
+                <Link
+                  to="/"
+                  className="header__link"
+                  onClick={handleMenuToggle}
+                >
+                  Home
+                </Link>
+              </li>
+
+              <li className="header__item">
+                <button
+                  onClick={handleSignInPopupOpen}
+                  className="header__login-button"
+                >
+                  Sign in
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
       </nav>
       <div className="header__horizontal-line"></div>
 
@@ -198,7 +219,7 @@ function Header() {
           console.log("Sign up form submitted:", data);
           handlePopupClose();
         }}
-        onSignInClick={handleSignInPopupOpen} // Switch to sign-in modal when clicking "Sign in"
+        onSignInClick={handleSignInPopupOpen}
       />
     </header>
   );
