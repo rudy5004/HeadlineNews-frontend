@@ -20,11 +20,13 @@ function Header() {
   const handleSignInPopupOpen = () => {
     setIsSignInPopupOpen(true);
     setIsSignUpPopupOpen(false);
+    setIsMenuOpen(false); // Ensure the menu overlay closes when Sign In is clicked at 320px
   };
 
   const handleSignUpPopupOpen = () => {
     setIsSignUpPopupOpen(true);
     setIsSignInPopupOpen(false);
+    setIsMenuOpen(false); // Ensure the menu overlay closes when Sign Up is clicked at 320px
   };
 
   const handlePopupClose = () => {
@@ -141,7 +143,7 @@ function Header() {
                 <Link
                   to="/"
                   className="header__link"
-                  onClick={handleMenuToggle}
+                  onClick={handleMenuToggle} // Close overlay when Home is clicked
                 >
                   Home
                 </Link>
@@ -149,7 +151,7 @@ function Header() {
 
               <li className="header__item">
                 <button
-                  onClick={handleSignInPopupOpen}
+                  onClick={handleSignInPopupOpen} // Close overlay when Sign In is clicked
                   className="header__login-button"
                 >
                   Sign in

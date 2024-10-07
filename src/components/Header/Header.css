@@ -196,6 +196,7 @@
 
   .header__menu-overlay {
     display: flex;
+    flex-direction: column;
     height: 230px;
     background-color: rgba(26, 27, 34, 1);
     z-index: 9999;
@@ -203,14 +204,15 @@
     top: 0;
     left: 0;
     width: 100vw;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
   }
 
   .header__logo {
     font-size: 24px;
     position: relative;
     z-index: 10000;
+    margin-top: 16px;
   }
 
   .header__horizontal-line {
@@ -223,19 +225,12 @@
     z-index: 10000;
   }
 
-  /* Make the "Sign in" button visible on the black overlay */
+  /* Ensure Home and Sign In buttons are visible in the overlay */
+  .header__menu-overlay .header__link,
   .header__menu-overlay .header__login-button {
     visibility: visible;
     opacity: 1;
     pointer-events: all;
-    position: relative;
     margin-top: 20px;
-  }
-
-  /* Ensure Home button is also visible */
-  .header__menu-overlay .header__link {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: all;
   }
 }
