@@ -1,20 +1,26 @@
+/* General Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* Flex container for logo and nav */
 .header__nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 30px 104px;
-  z-index: 10;
-  box-sizing: border-box;
 }
 
 /* Logo styling */
 .header__logo {
-  font-size: 24px;
+  font-size: 24px; /* Adjust for readability */
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   color: #fff;
@@ -23,11 +29,13 @@
   z-index: 2;
 }
 
+/* Navigation menu styling */
 .header__menu {
   display: flex;
+  justify-content: center; /* Center alignment */
   align-items: center;
-  gap: 42px; /* Add a gap of 76px between navigation items */
   list-style: none;
+  gap: 20px; /* Gap between menu items */
   margin: 0;
   padding: 0;
 }
@@ -59,7 +67,7 @@
 .header__link--active::after {
   content: "";
   position: absolute;
-  bottom: -24px; /* White bar 24px below the text */
+  bottom: -34px; /* White bar 24px below the text */
   left: 50%;
   width: 68px; /* Set the width of the white underline */
   height: 2px;
@@ -71,7 +79,7 @@
 /* Black horizontal line across the page */
 .header__horizontal-line {
   position: absolute;
-  bottom: 844px; /* Position the black line just below the white bar */
+  bottom: 0; /* Adjusted to keep the line at the bottom of the header */
   left: 0;
   width: 100%;
   height: 1px;
@@ -92,6 +100,43 @@
   cursor: pointer;
   outline: none; /* Remove default outline */
   text-align: center;
-  line-height: 47px; /* Adjust line-height for vertical centering */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  transition: 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Responsive Media Query for 720px and below */
+@media (max-width: 720px) {
+  .header {
+    padding: 15px 30px; /* Adjust padding for smaller view */
+  }
+
+  .header__logo {
+    font-size: 20px; /* Slightly reduce logo size */
+  }
+
+  .header__menu {
+    gap: 15px; /* Adjust gap between menu items */
+  }
+
+  .header__link {
+    font-size: 16px; /* Smaller font for links */
+  }
+  .header__link--active::after {
+    bottom: -27px; /* White bar 24px below the text */
+  }
+
+  /* Keep the sign-in button unchanged before the break */
+  .header__login-button {
+    padding: 8px 16px; /* Adjust padding for smaller view */
+    font-size: 14px; /* Reduce font size */
+    height: 41px;
+  } /* Added missing closing bracket here */
+
+  /* Horizontal line below header */
+  .header__horizontal-line {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent line */
+  }
 }
