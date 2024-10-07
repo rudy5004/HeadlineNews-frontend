@@ -103,6 +103,17 @@
   transition: 0.3s ease, color 0.3s ease; /* Smooth hover effect */
 }
 
+/* Menu icon, initially hidden */
+.header__menu-icon {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
 /* Responsive Media Query for 720px and below */
 @media (max-width: 720px) {
   .header {
@@ -120,6 +131,7 @@
   .header__link {
     font-size: 16px; /* Smaller font for links */
   }
+
   .header__link--active::after {
     bottom: -27px; /* White bar 24px below the text */
   }
@@ -129,14 +141,52 @@
     padding: 8px 16px; /* Adjust padding for smaller view */
     font-size: 14px; /* Reduce font size */
     height: 41px;
-  } /* Added missing closing bracket here */
+  }
+}
 
-  /* Horizontal line below header */
-  .header__horizontal-line {
-    bottom: 0;
+/* Responsive Media Query for 320px and below */
+@media (max-width: 320px) {
+  .header__menu-icon {
+    display: block; /* Show the menu icon at 320px page break */
+  }
+
+  .header__link,
+  .header__login-button {
+    visibility: hidden; /* Hide the Home and Sign-in buttons visually */
+    opacity: 0; /* Ensure they are hidden but functional */
+    pointer-events: none; /* Disable interaction for Home link */
+  }
+
+  .header__login-button {
+    visibility: visible; /* Keep the Sign-in button functional but invisible */
+    opacity: 0; /* Hidden visually but clickable */
+    pointer-events: all; /* Allow clicks on Sign-in */
+  }
+
+  .header__menu-overlay {
+    display: flex; /* Show the menu overlay */
+    height: 230px;
+    position: absolute;
+    top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999; /* Ensure it stays above other elements */
+  }
+
+  .header__logo {
+    font-size: 24px;
+    position: relative;
+    z-index: 10000;
+  }
+
+  .header__horizontal-line {
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 0;
+    width: 100vw;
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent line */
+    background-color: rgba(196, 196, 196, 0.3);
+    z-index: 10000;
   }
 }

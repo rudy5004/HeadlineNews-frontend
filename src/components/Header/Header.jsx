@@ -3,11 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import SignUpModal from "../SignUpModal/SignUpModal"; // Import the SignUpModal component
 import NewsExplorerLogo from "../../assets/NewsExplorer.svg";
+import MenuIcon from "../../assets/menu.svg"; // Import the menu icon
 import "./Header.css";
 
 function Header() {
   const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(false);
   const [isSignUpPopupOpen, setIsSignUpPopupOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle the menu visibility
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
@@ -27,7 +29,12 @@ function Header() {
   const handlePopupClose = () => {
     setIsSignInPopupOpen(false);
     setIsSignUpPopupOpen(false);
+    setIsMenuOpen(false); // Close the menu when popups are closed
     setEmailError(""); // Clear errors when popups are closed
+  };
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
   };
 
   useEffect(() => {
@@ -37,14 +44,14 @@ function Header() {
       }
     };
 
-    if (isSignInPopupOpen || isSignUpPopupOpen) {
+    if (isSignInPopupOpen || isSignUpPopupOpen || isMenuOpen) {
       window.addEventListener("keydown", handleEscClose);
     }
 
     return () => {
       window.removeEventListener("keydown", handleEscClose);
     };
-  }, [isSignInPopupOpen, isSignUpPopupOpen]);
+  }, [isSignInPopupOpen, isSignUpPopupOpen, isMenuOpen]);
 
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains("popup_open")) {
@@ -86,13 +93,24 @@ function Header() {
           />
         </Link>
 
-        <ul className="header__menu">
+        {/* Menu icon, visible only at 320px breakpoint */}
+        <img
+          src={MenuIcon}
+          alt="Menu icon"
+          className="header__menu-icon"
+          onClick={handleMenuToggle}
+        />
+
+        <ul
+          className={`header__menu ${isMenuOpen ? "header__menu--open" : ""}`}
+        >
           <li className="header__item">
             <Link
               to="/"
               className={`header__link ${
                 location.pathname === "/" ? "header__link--active" : ""
               }`}
+              onClick={handleMenuToggle} // Close menu when Home is clicked
             >
               Home
             </Link>
@@ -100,7 +118,11 @@ function Header() {
 
           {location.pathname === "/saved-news" && (
             <li className="header__item">
-              <Link to="/saved-news" className="header__link">
+              <Link
+                to="/saved-news"
+                className="header__link"
+                onClick={handleMenuToggle} // Close menu when Saved Articles is clicked
+              >
                 Saved articles
               </Link>
             </li>
