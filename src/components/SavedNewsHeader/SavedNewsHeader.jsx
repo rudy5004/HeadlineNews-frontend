@@ -80,6 +80,9 @@ function SavedNewsHeader({ user }) {
         </div>
       </nav>
 
+      {/* Add the horizontal line below the nav */}
+      <div className="saved-news-header__horizontal-line"></div>
+
       {/* Menu overlay, shown when menu is open */}
       {isMenuOpen && (
         <div className="saved-news-header__menu-overlay">

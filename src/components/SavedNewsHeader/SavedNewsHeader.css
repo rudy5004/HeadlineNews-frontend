@@ -40,6 +40,16 @@
   padding-bottom: 3px;
   display: inline-block;
 }
+/* Horizontal line spanning the full width of the page */
+.saved-news-header__horizontal-line {
+  position: absolute;
+  top: 72px; /* Adjust the top position as needed */
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background-color: rgba(196, 196, 196, 0.3); /* Same color as in header */
+  z-index: 10000; /* Ensure it's on top */
+}
 
 .saved-news-header__underline {
   position: absolute;
