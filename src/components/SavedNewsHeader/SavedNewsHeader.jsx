@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewsExplorerLogoBlack from "../../assets/NewsExplorerBlack.svg"; // Black logo
 import MenuIcon from "../../assets/BlackMenu.svg"; // Menu icon
-import CloseIcon from "../../assets/close.svg"; // Close icon
+import BlackCloseIcon from "../../assets/blackClose.svg"; // Close icon
 import LogoutIcon from "../../assets/logout.svg";
 import "./SavedNewsHeader.css"; // Custom CSS for this header
 
@@ -87,7 +87,7 @@ function SavedNewsHeader({ user }) {
       {isMenuOpen && (
         <div className="saved-news-header__menu-overlay">
           <img
-            src={CloseIcon}
+            src={BlackCloseIcon}
             alt="Close icon"
             className="saved-news-header__menu-close"
             onClick={handleMenuToggle}
