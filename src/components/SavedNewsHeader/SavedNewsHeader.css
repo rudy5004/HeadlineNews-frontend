@@ -90,3 +90,106 @@
   margin-top: 16px;
   z-index: -1;
 }
+
+@media (max-width: 720px) {
+  .saved-news-header {
+    padding: 30px 40px 0 40px;
+  }
+
+  .saved-news-header__right {
+    gap: 40px;
+  }
+  .saved-news-header__menu {
+    gap: 40px;
+  }
+  .saved-news-header__link {
+    font-size: 16px;
+  }
+  .saved-news-header__elise-button {
+    font-size: 16px;
+  }
+  .saved-news-header__underline {
+    right: 106px;
+  }
+}
+/* Hide the menu icon outside the 320px breakpoint */
+@media (min-width: 321px) {
+  .saved-news-header__menu-icon {
+    display: none; /* Hide menu icon for larger screens */
+  }
+}
+
+/* Initially hide the Home and Saved Articles buttons at 320px */
+@media (max-width: 320px) {
+  .saved-news-header__right {
+    display: none; /* Hide the links and buttons by default */
+  }
+
+  /* When the menu is open, display the buttons */
+  .saved-news-header__right.open {
+    display: flex;
+  }
+
+  .saved-news-header__menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .saved-news-header__menu-overlay {
+    display: flex;
+    flex-direction: column;
+    height: 230px; /* Set the height to 230px */
+    background-color: rgba(
+      255,
+      255,
+      255,
+      1
+    ); /* Solid white background for the box */
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow to emphasize the box */
+  }
+
+  .saved-news-header__menu-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
+
+  .saved-news-header__overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .saved-news-header__overlay-logo {
+    margin-bottom: 30px;
+  }
+
+  .saved-news-header__overlay-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .saved-news-header__overlay-item {
+    margin-bottom: 20px;
+  }
+
+  .saved-news-header__link {
+    color: black; /* Black text for Home and Saved articles */
+    font-size: 1.125rem; /* 18px in decimal (rem) */
+    line-height: 3.5rem; /* 56px in decimal (rem) */
+    text-decoration: none;
+  }
+
+  .saved-news-header__link.saved-news-header__link--active {
+    font-weight: bold; /* Highlight active link */
+  }
+}

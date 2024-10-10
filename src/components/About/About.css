@@ -47,3 +47,45 @@
   margin-bottom: 24px;
   font-weight: 400;
 }
+
+@media (max-width: 720px) {
+  .about__image {
+    width: 232px;
+    height: 232px;
+    margin: 61px 40px 61px 32px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 1.33px;
+  }
+}
+
+@media (max-width: 320px) {
+  .about {
+    display: flex;
+    flex-direction: column;
+  }
+  .about__image {
+    width: 272px;
+    height: 272px;
+    margin: 32px 24px 24px 24px;
+  }
+  .about__info {
+    margin-top: 15px;
+  }
+
+  .about__title {
+    margin-left: 24px;
+  }
+
+  .about__text-container {
+    width: 305px; /* Set the width for the text container */
+    text-align: left;
+    margin-bottom: 128px;
+  }
+
+  .about__text {
+    margin-left: 24px;
+  }
+}

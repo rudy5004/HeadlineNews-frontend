@@ -150,3 +150,11 @@
   background-color: #d9e2ec; /* Keep gray background when disabled */
   cursor: not-allowed;
 }
+
+/* Close button adjustments for smaller screens */
+@media screen and (max-width: 320px) {
+  .popup__close {
+    top: -41px;
+    right: 4px; /* Adjusted to keep the button inside the modal */
+  }
+}

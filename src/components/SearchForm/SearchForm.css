@@ -1,8 +1,10 @@
 .search-form {
   display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 608px; /* Set width to 608px */
   height: 64px; /* Set height to 64px */
+  margin: 0 auto;
   margin-bottom: 80px;
   border-radius: 100px; /* Full rounded corners */
   position: relative; /* Allow overlapping elements inside */
@@ -20,21 +22,51 @@
 }
 
 .search-form__button {
-  position: absolute; /* Position the button to overlap the input */
+  position: absolute;
   right: 0;
-  width: 168px; /* Set width to 168px */
-  height: 67px; /* Set height to match the search form */
+  width: 25%; /* Relative to parent container width */
+  max-width: 168px; /* Max width for larger screens */
+  min-width: 100px; /* Minimum width for smaller screens */
+  height: 67px;
   background-color: #007bff;
   border: none;
   color: white;
   font-size: 16px;
-  border-radius: 100px; /* Ensure button has rounded corners */
+  border-radius: 100px;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center; /* Center the button text */
+  align-items: center;
 }
 
 .search-form__button:hover {
   background-color: #0056b3;
+}
+
+@media (max-width: 720px) {
+  .search-form__input {
+    max-width: 448px;
+    max-height: 56px;
+  }
+  .search-form__button {
+    max-width: 160px;
+    max-height: 58px;
+    right: 66px;
+  }
+}
+
+@media (max-width: 320px) {
+  .search-form__input {
+    width: 272px;
+    padding-left: 16px;
+    position: absolute;
+    top: 40px;
+    right: 22px;
+  }
+  .search-form__button {
+    min-width: 288px;
+    max-height: 56px;
+    right: 22px;
+    bottom: -105px;
+  }
 }
