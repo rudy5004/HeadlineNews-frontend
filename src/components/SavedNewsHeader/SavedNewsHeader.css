@@ -40,15 +40,29 @@
   padding-bottom: 3px;
   display: inline-block;
 }
-/* Horizontal line spanning the full width of the page */
+
+/* Horizontal line for the header */
 .saved-news-header__horizontal-line {
   position: absolute;
-  top: 72px; /* Adjust the top position as needed */
+  top: 72px;
   left: 0;
   width: 100vw;
   height: 1px;
-  background-color: rgba(196, 196, 196, 0.3); /* Same color as in header */
-  z-index: 10000; /* Ensure it's on top */
+  background-color: rgba(196, 196, 196, 0.3);
+  z-index: 10000;
+}
+
+/* Horizontal line inside the menu overlay */
+.saved-news-header__overlay-horizontal-line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(
+    196,
+    196,
+    196,
+    0.3
+  ); /* Same color as the header line */
+  margin: 16px 0; /* Add some margin around it if needed */
 }
 
 .saved-news-header__underline {
@@ -58,7 +72,7 @@
   background-color: rgba(26, 27, 34, 1);
   margin-top: 2px;
   transform: translateX(-50%);
-  right: 200px;
+  right: 203px;
   top: 84px;
 }
 
@@ -90,15 +104,15 @@
   height: 20px;
 }
 
-/* Horizontal line spanning the full width of the page */
+/* Ensure full-width line across the screen */
 .saved-news-header__horizontal-line {
   position: absolute;
   left: 0;
-  width: 113;
+  width: 100vw; /* Ensure the full width of the screen */
   height: 1px;
   background-color: rgba(26, 27, 34, 0.3);
   margin-top: 16px;
-  z-index: -1;
+  z-index: 10000; /* Bring it to the front */
 }
 
 @media (max-width: 720px) {
@@ -122,6 +136,7 @@
     right: 106px;
   }
 }
+
 /* Hide the menu icon outside the 320px breakpoint */
 @media (min-width: 321px) {
   .saved-news-header__menu-icon {
@@ -129,6 +144,7 @@
   }
 }
 
+/* Initially hide the Home and Saved Articles buttons at 320px */
 /* Initially hide the Home and Saved Articles buttons at 320px */
 @media (max-width: 320px) {
   .saved-news-header__right {
@@ -201,5 +217,22 @@
 
   .saved-news-header__link.saved-news-header__link--active {
     font-weight: bold; /* Highlight active link */
+  }
+
+  /* Horizontal line spanning the full width of the page */
+  .saved-news-header__horizontal-line {
+    position: absolute;
+    left: 0;
+    width: 100vw; /* Full width to avoid shortness */
+    height: 1px;
+    background-color: rgba(196, 196, 196, 0.3);
+    z-index: 10000;
+    top: 72px; /* Adjust to the desired position */
+    margin-top: 0; /* Remove any additional margins */
+  }
+
+  /* Remove any extra or conflicting horizontal lines */
+  .saved-news-header__overlay-horizontal-line {
+    display: none; /* Ensure no second horizontal line is created */
   }
 }

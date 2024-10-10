@@ -103,6 +103,9 @@ function SavedNewsHeader({ user }) {
               />
             </Link>
 
+            {/* Add horizontal line inside the overlay */}
+            <div className="saved-news-header__overlay-horizontal-line"></div>
+
             <ul className="saved-news-header__overlay-menu">
               <li className="saved-news-header__overlay-item">
                 <Link
