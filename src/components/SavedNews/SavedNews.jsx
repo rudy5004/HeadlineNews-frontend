@@ -12,8 +12,7 @@ function SavedNews({ user, savedArticles }) {
       <div className="saved-news__header">
         <h2 className="saved-news__title">Saved articles</h2>
         <h3 className="saved-news__subheading">
-          {`${user.name}, you have ${savedArticles.length} saved`} <br />{" "}
-          articles
+          {`${user.name}, you have ${savedArticles.length} saved`} articles
         </h3>
         <p className="saved-news__description">
           By keywords:{" "}

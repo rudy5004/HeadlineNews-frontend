@@ -1,9 +1,6 @@
 .cards-container {
   display: grid; /* Use grid layout */
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(400px, 1fr)
-  ); /* Allow cards to fill the row */
+  grid-template-columns: repeat(3, 1fr); /* Allow cards to fill the row */
   gap: 5px; /* Space between each card */
   justify-items: stretch; /* Ensure cards stretch to fill grid cells */
   background-color: rgba(209, 210, 214, 1); /* Light grayish-blue color */
@@ -13,5 +10,13 @@
   padding-right: 120px; /* Add right padding for cards */
   margin-left: -104px; /* Negative margin to offset left padding */
   margin-right: -104px; /* Negative margin to offset right padding */
-  width: calc(100% + 40px); /* Full width accounting for negative margins */
+}
+
+@media (max-width: 320px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* Change to a single column layout */
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+  }
 }

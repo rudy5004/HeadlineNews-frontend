@@ -183,6 +183,9 @@
 
 /* Responsive Media Query for 320px and below */
 @media (max-width: 320px) {
+  .header__menu-close {
+    right: 63px;
+  }
   .header__menu {
     flex-direction: column;
     align-items: flex-start;
