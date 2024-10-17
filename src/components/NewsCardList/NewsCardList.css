@@ -1,4 +1,11 @@
-.cards-container {
+/* Block for the news card list */
+.news-card-list {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Element for the container of cards using grid layout */
+.news-card-list__container {
   display: grid; /* Use grid layout */
   grid-template-columns: repeat(3, 1fr); /* Allow cards to fill the row */
   gap: 5px; /* Space between each card */
@@ -12,8 +19,29 @@
   margin-right: -104px; /* Negative margin to offset right padding */
 }
 
+/* Element for the "Show More" button */
+.news-card-list__show-more {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px 0;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.news-card-list__show-more:hover {
+  background-color: #0056b3;
+}
+
+/* Media query for smaller screens (320px width) */
 @media (max-width: 320px) {
-  .cards-container {
+  .news-card-list__container {
     grid-template-columns: 1fr; /* Change to a single column layout */
     padding-left: 0px;
     padding-right: 0px;

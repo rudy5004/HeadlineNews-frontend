@@ -1,12 +1,11 @@
 /* News Card Styling */
 .news-card {
-  max-width: 400px; /* Allow cards to take full width of the grid item */
-  height: 576px; /* Fixed height for each card */
+  max-width: 400px;
+  height: 576px;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 0;
-  position: relative; /* Important for absolute positioning of the delete button and source */
+  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -27,155 +26,130 @@
   border-top-right-radius: 8px;
 }
 
-/* Content Styling for the News Card */
-.news-card__content {
-  padding: 17px 24px 24px; /* Uniform padding for content: top 17px, right 24px, bottom 24px, left 24px */
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; /* Ensures content fills available space */
-}
-
-/* Date Styling */
-.news-card__date {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24px;
-  color: rgba(182, 188, 191, 1); /* Correct usage of color */
-  margin-bottom: 12px; /* 12px spacing between date and title */
-  margin-top: 0px;
-}
-
-/* Title Styling */
-.news-card__title {
-  font-family: "Roboto Slab", serif; /* Use Roboto Slab */
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 30px;
-  margin-bottom: 16px; /* 16px spacing between title and description */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal; /* Ensures text wraps naturally */
-  word-wrap: break-word; /* Ensures long words wrap properly */
-  margin-top: 0px;
-}
-
-/* Description Styling */
-.news-card__description {
-  font-family: "Roboto", sans-serif; /* Use Roboto */
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  margin-top: 0px;
-}
-
-/* Source Styling */
-.news-card__source {
-  color: rgba(182, 188, 191, 1); /* Correct usage of color */
-  font-family: "Roboto Slab", serif; /* Use Roboto Slab */
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.4px;
-  text-align: left;
-  position: absolute; /* Ensure it's always at the bottom left */
-  bottom: 24px; /* 24px from the bottom */
-  left: 24px; /* 24px from the left */
-  margin: 0;
-}
-
-/* Keyword Box Styling */
-.news-card__keyword {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: rgba(26, 27, 34, 1);
-  background-color: rgba(26, 27, 34, 0.1);
-  padding: 5px 16px;
-  border-radius: 10px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-/* Delete Button Styling */
+/* Icon and Hover Box Styling */
 .news-card__delete-container {
   position: absolute;
   top: 20px;
   right: 20px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
+.news-card__not-saved-icon,
 .news-card__delete-button {
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
-.news-card__remove-text {
-  position: absolute;
-  top: 0;
-  right: 35px;
-  width: 159px;
-  height: 40px;
+/* Hover Box for text next to the icon */
+.news-card__hover-box {
   background-color: white;
-  border-radius: 5px;
+  color: black;
+  padding: 0px 8px;
+  border-radius: 4px;
+  height: 40px; /* Same height as the icon */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  line-height: 14px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to match the card */
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.news-card__delete-container:hover .news-card__remove-text {
+.news-card__delete-container:hover .news-card__hover-box {
   opacity: 1;
 }
 
+/* Other Content Styling */
+.news-card__content {
+  padding: 17px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-card__date,
+.news-card__source,
+.news-card__title,
+.news-card__description {
+  margin: 0;
+}
+
+.news-card__date {
+  font-size: 18px;
+  color: rgba(182, 188, 191, 1);
+  margin-bottom: 12px;
+}
+
+.news-card__title {
+  font-size: 26px;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+.news-card__description {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.news-card__source {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Keyword Styling */
+.news-card__keyword {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(26, 27, 34, 0.1);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(26, 27, 34, 1);
+}
+
+/* Responsive Design */
 @media screen and (max-width: 720px) {
   .news-card {
-    width: 224px; /* Allow cards to take full width of the grid item */
-    height: 420px; /* Fixed height for each card */
+    width: 224px;
+    height: 420px;
   }
 
   .news-card__image {
-    width: 100%;
     min-height: 150px;
   }
 
   .news-card__content {
-    padding: 16px 16px 16px 16px;
+    padding: 16px;
   }
 
   .news-card__title {
     font-size: 22px;
-    line-height: 24px;
-    margin-bottom: 10px; /* 16px spacing between title and description */
-    overflow: hidden;
   }
 
-  /* Description Styling */
+  /* Description Styling with Ellipsis for Long Text */
   .news-card__description {
-    width: 192px; /* Fixed width */
-    height: 88px; /* Fixed height */
-    overflow: hidden; /* Hide overflowed content */
-    text-overflow: ellipsis; /* Add ellipsis for truncated content */
-    display: -webkit-box; /* Necessary for multiline ellipsis */
-    -webkit-line-clamp: 4; /* Show up to 3 lines (adjust as needed) */
-    -webkit-box-orient: vertical; /* Vertical text orientation */
-    white-space: normal; /* Allow text to wrap */
-    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; /* Required for multi-line truncation */
+    -webkit-line-clamp: 4; /* Limits the text to 4 lines */
+    -webkit-box-orient: vertical; /* Ensures vertical orientation for the clamp */
+    white-space: normal; /* Allows the text to wrap normally */
+    margin-top: 0;
   }
+
   .news-card__source {
     bottom: 16px;
     left: 16px;
@@ -183,7 +157,6 @@
 
   .news-card__keyword {
     padding: 8px 20px;
-    background-color: #fff;
     top: 8px;
     left: 8px;
   }
@@ -192,13 +165,13 @@
     top: 8px;
     right: 8px;
   }
+}
 
-  @media (max-width: 320px) {
-    .news-card {
-      max-width: 288px;
-      margin: 0 auto;
-      width: 100%;
-      margin-top: 16px;
-    }
+@media (max-width: 320px) {
+  .news-card {
+    max-width: 288px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 16px;
   }
 }

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm() {
-  const [query, setQuery] = useState("");
+function SearchForm({ onSearch }) {
+  const [query, setQuery] = useState(""); // Local state for managing the query
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic to handle search submission, like calling an API
-    console.log("Search query:", query);
+    if (query.trim()) {
+      onSearch(query); // Pass the query to the parent component for search
+    }
   };
 
   return (
@@ -17,7 +18,7 @@ function SearchForm() {
         className="search-form__input"
         placeholder="Enter topic"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)} // Update query state
         required
       />
       <button type="submit" className="search-form__button">
