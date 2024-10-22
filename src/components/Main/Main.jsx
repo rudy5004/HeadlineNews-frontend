@@ -4,7 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import Header from "../Header/Header";
 import NewsCardList from "../NewsCardList/NewsCardList";
-import SignInModal from "../SignUpModal/SignUpModal"; // Assuming you have a sign-in modal
+import SignUpModal from "../SignUpModal/SignUpModal"; // Assuming you have the SignUpModal
 import { fetchNews } from "../../utils/ThirdPartyApi";
 import "./Main.css";
 
@@ -14,9 +14,8 @@ function Main() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); // State for logged in
 
-  // Check if the user is logged in on component mount
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
     setIsUserLoggedIn(loggedInStatus);
@@ -26,9 +25,8 @@ function Main() {
     setSavedArticles(storedArticles);
   }, []);
 
-  // Function to handle user sign-in and update state immediately
   const handleSignIn = () => {
-    setIsUserLoggedIn(true); // Update login state
+    setIsUserLoggedIn(true); // Set user logged in state immediately after sign in
   };
 
   const handleSearch = async (searchQuery) => {
@@ -39,12 +37,10 @@ function Main() {
 
     try {
       const fetchedArticles = await fetchNews(searchQuery);
-
       const articlesWithKeywords = fetchedArticles.map((article) => ({
         ...article,
         keyword: searchQuery,
       }));
-
       setArticles(articlesWithKeywords);
     } catch (err) {
       setError(
@@ -59,7 +55,6 @@ function Main() {
     const isAlreadySaved = savedArticles.some(
       (saved) => saved.title === article.title
     );
-
     let updatedSavedArticles;
     if (isAlreadySaved) {
       updatedSavedArticles = savedArticles.filter(
@@ -93,8 +88,8 @@ function Main() {
         </div>
       </section>
 
-      {/* Show the sign-in modal and pass the sign-in handler */}
-      <SignInModal onSignIn={handleSignIn} />
+      {/* Render Sign Up Modal and pass the handleSignIn function */}
+      <SignUpModal onSignIn={handleSignIn} />
 
       {loading && <Preloader />}
       {error && <p className="error">{error}</p>}
@@ -105,7 +100,7 @@ function Main() {
             articles={articles}
             savedArticles={savedArticles}
             onSave={handleSaveArticle}
-            isUserLoggedIn={isUserLoggedIn}
+            isUserLoggedIn={isUserLoggedIn} // Pass login state to NewsCardList
           />
         </section>
       )}

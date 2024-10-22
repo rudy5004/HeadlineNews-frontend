@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import RegistrationSuccessModal from "../../components/RegistrationSuccessModal/RegistrationSuccessModal";
 
-function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
+function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
+  // Add onSignIn prop
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -10,11 +11,10 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
   const [isFormValid, setIsFormValid] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  // Function to validate the form and check username availability
   const validateForm = () => {
     const isUsernameValid = username.length > 0 && !usernameError;
-    const isPasswordValid = password.length > 0;
-    setIsFormValid(isUsernameValid && isPasswordValid);
+    const isPasswordValid = password.length >= 6;
+    setIsFormValid(isUsernameValid && isPasswordValid && email.includes("@"));
   };
 
   const handleEmailChange = (e) => {
@@ -25,13 +25,11 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
   const handleUsernameChange = (e) => {
     const value = e.target.value;
     setUsername(value);
-
     if (["existingUser", "takenUsername"].includes(value)) {
       setUsernameError("Username isn't available");
     } else {
       setUsernameError("");
     }
-
     validateForm();
   };
 
@@ -43,17 +41,22 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      // Store user information in localStorage upon successful sign-up
       localStorage.setItem("username", username);
       localStorage.setItem("email", email);
-      localStorage.setItem("isLoggedIn", true); // You can track login status like this
+      localStorage.setItem("isLoggedIn", "true");
+
+      onSignIn(); // Call this to immediately update state in Main.jsx
 
       setShowSuccessModal(true);
       setTimeout(() => {
-        onClose(); // Close sign-up modal smoothly
+        onClose();
       }, 200);
     }
   };
+
+  useEffect(() => {
+    validateForm();
+  }, [email, username, password]);
 
   return (
     <>
@@ -107,7 +110,7 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
           <input
             type="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="Enter password (min 6 characters)"
             required
             className="popup__input"
             value={password}
@@ -120,23 +123,14 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
           Sign Up
         </button>
 
-        {/* Sign In Link */}
-        <div className="popup__separator">
-          or{" "}
-          <a href="#" className="popup__link" onClick={onSignInClick}>
-            Sign in
-          </a>
-        </div>
+        {/* Success Modal */}
+        {showSuccessModal && (
+          <RegistrationSuccessModal
+            isOpen={showSuccessModal}
+            onClose={() => setShowSuccessModal(false)}
+          />
+        )}
       </PopupWithForm>
-
-      {/* Success Modal */}
-      {showSuccessModal && (
-        <RegistrationSuccessModal
-          isOpen={showSuccessModal}
-          onClose={() => setShowSuccessModal(false)}
-          onSignInClick={onSignInClick} // Trigger Sign In modal when clicked
-        />
-      )}
     </>
   );
 }
