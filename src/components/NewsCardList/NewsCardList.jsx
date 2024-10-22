@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import "./NewsCardList.css";
 
-function NewsCardList({ articles }) {
-  // State to track the number of articles to display
-  const [visibleCount, setVisibleCount] = useState(3);
+function NewsCardList({ articles, isUserLoggedIn, onSave }) {
+  const [visibleCount, setVisibleCount] = useState(3); // Show only 3 articles initially
 
-  // Function to handle the "Show More" button click
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 3); // Show 3 more articles at a time
   };
@@ -15,7 +13,12 @@ function NewsCardList({ articles }) {
     <div className="news-card-list">
       <div className="news-card-list__container">
         {articles.slice(0, visibleCount).map((article, index) => (
-          <NewsCard key={index} article={article} />
+          <NewsCard
+            key={index}
+            article={article}
+            isUserLoggedIn={isUserLoggedIn} // Pass login status
+            onSave={onSave} // Pass the save handler
+          />
         ))}
       </div>
 

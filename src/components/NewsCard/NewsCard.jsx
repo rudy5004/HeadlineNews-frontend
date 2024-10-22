@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./NewsCard.css";
-import notSavedIcon from "../../assets/notSavedIcon.svg";
-import notSavedIconHover from "../../assets/notSavedIconHover.svg";
-import defaultImage from "../../assets/Nature.svg";
+import savedIcon from "../../assets/savedIcon.svg"; // Import saved icon
+import notSavedIcon from "../../assets/notSavedIcon.svg"; // Grey default icon
+import notSavedIconHover from "../../assets/notSavedIconHover.svg"; // Black hover icon
+import defaultImage from "../../assets/Nature.svg"; // Default image
 
-function NewsCard({ article }) {
-  const [isIconHovered, setIsIconHovered] = useState(false);
-  const location = useLocation();
+function NewsCard({ article, isUserLoggedIn, onSave }) {
+  const [isSaved, setIsSaved] = useState(false); // Track save status
+  const [isIconHovered, setIsIconHovered] = useState(false); // Track hover state
 
-  const imageSrc =
-    article.urlToImage && article.urlToImage.startsWith("http")
-      ? article.urlToImage
-      : defaultImage;
+  // Check if the article is already saved
+  useEffect(() => {
+    const savedArticles =
+      JSON.parse(localStorage.getItem("savedArticles")) || [];
+    const isArticleSaved = savedArticles.some(
+      (saved) => saved.title === article.title
+    );
+    setIsSaved(isArticleSaved);
+  }, [article.title]);
+
+  const handleSaveClick = () => {
+    if (!isUserLoggedIn) {
+      alert("Please sign in to save articles.");
+      return;
+    }
+    onSave(article); // Call save handler
+    setIsSaved((prevState) => !prevState); // Toggle saved state
+  };
+
+  const imageSrc = article.urlToImage?.startsWith("http")
+    ? article.urlToImage
+    : defaultImage;
 
   return (
     <div className="news-card">
       {/* Display the keyword */}
       <div className="news-card__header">
         <span className="news-card__keyword">
-          {article.keyword || "General"} {/* Display the keyword */}
+          {article.keyword || "General"}
         </span>
       </div>
 
@@ -31,21 +50,23 @@ function NewsCard({ article }) {
         onError={(e) => (e.target.src = defaultImage)}
       />
 
-      {/* Icon and hover text */}
-      <div className="news-card__delete-container">
-        {isIconHovered && (
-          <div className="news-card__hover-box">
-            {location.pathname === "/"
-              ? "Sign in to save articles"
-              : "Remove from saved"}
-          </div>
-        )}
+      {/* Save icon */}
+      <div
+        className="news-card__save-icon-container"
+        onMouseEnter={() => setIsIconHovered(true)}
+        onMouseLeave={() => setIsIconHovered(false)}
+        onClick={handleSaveClick}
+      >
         <img
-          src={isIconHovered ? notSavedIconHover : notSavedIcon}
-          alt="Not saved"
-          className="news-card__not-saved-icon"
-          onMouseEnter={() => setIsIconHovered(true)}
-          onMouseLeave={() => setIsIconHovered(false)}
+          src={
+            isSaved
+              ? savedIcon
+              : isIconHovered
+              ? notSavedIconHover
+              : notSavedIcon
+          }
+          alt={isSaved ? "Saved" : "Not saved"}
+          className="news-card__save-icon"
         />
       </div>
 

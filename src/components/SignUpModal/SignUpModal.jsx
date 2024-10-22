@@ -43,6 +43,11 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignInClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
+      // Store user information in localStorage upon successful sign-up
+      localStorage.setItem("username", username);
+      localStorage.setItem("email", email);
+      localStorage.setItem("isLoggedIn", true); // You can track login status like this
+
       setShowSuccessModal(true);
       setTimeout(() => {
         onClose(); // Close sign-up modal smoothly

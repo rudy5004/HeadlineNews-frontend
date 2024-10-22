@@ -4,52 +4,73 @@ import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import Header from "../Header/Header";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import SignInModal from "../SignUpModal/SignUpModal"; // Assuming you have a sign-in modal
 import { fetchNews } from "../../utils/ThirdPartyApi";
 import "./Main.css";
 
 function Main() {
-  // State hooks for managing articles, loading, and errors
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
   const [error, setError] = useState("");
-  const [query, setQuery] = useState(""); // State for storing the current search query
+  const [query, setQuery] = useState("");
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  // Load saved articles from localStorage when the component mounts
+  // Check if the user is logged in on component mount
   useEffect(() => {
-    const savedArticles = localStorage.getItem("articles");
-    if (savedArticles) {
-      setArticles(JSON.parse(savedArticles));
-    }
+    const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
+    setIsUserLoggedIn(loggedInStatus);
+
+    const storedArticles =
+      JSON.parse(localStorage.getItem("savedArticles")) || [];
+    setSavedArticles(storedArticles);
   }, []);
 
-  // Function to handle search and fetch news based on the query
+  // Function to handle user sign-in and update state immediately
+  const handleSignIn = () => {
+    setIsUserLoggedIn(true); // Update login state
+  };
+
   const handleSearch = async (searchQuery) => {
     setLoading(true);
-    setError(""); // Reset error state before fetching
-    setArticles([]); // Reset articles before fetching
-    setQuery(searchQuery); // Update the query state
+    setError("");
+    setArticles([]);
+    setQuery(searchQuery);
 
     try {
       const fetchedArticles = await fetchNews(searchQuery);
 
-      // Map over the fetched articles and add the keyword (search query)
       const articlesWithKeywords = fetchedArticles.map((article) => ({
         ...article,
-        keyword: searchQuery, // Add the search query as the keyword
+        keyword: searchQuery,
       }));
 
-      setArticles(articlesWithKeywords); // Store the fetched articles in state
-
-      // Save the fetched articles to localStorage
-      localStorage.setItem("articles", JSON.stringify(articlesWithKeywords));
+      setArticles(articlesWithKeywords);
     } catch (err) {
-      // If API call fails, set an error message
       setError(
         "Sorry, something went wrong during the request. Please try again later."
       );
     } finally {
-      setLoading(false); // Ensure loading stops after the request
+      setLoading(false);
     }
+  };
+
+  const handleSaveArticle = (article) => {
+    const isAlreadySaved = savedArticles.some(
+      (saved) => saved.title === article.title
+    );
+
+    let updatedSavedArticles;
+    if (isAlreadySaved) {
+      updatedSavedArticles = savedArticles.filter(
+        (saved) => saved.title !== article.title
+      );
+    } else {
+      updatedSavedArticles = [...savedArticles, article];
+    }
+
+    setSavedArticles(updatedSavedArticles);
+    localStorage.setItem("savedArticles", JSON.stringify(updatedSavedArticles));
   };
 
   return (
@@ -68,26 +89,27 @@ function Main() {
             Find the latest news on any topic and save them in your personal
             account.
           </p>
-          <SearchForm onSearch={handleSearch} />{" "}
-          {/* Pass handleSearch to SearchForm */}
+          <SearchForm onSearch={handleSearch} />
         </div>
       </section>
 
-      {/* Preloader while fetching */}
-      {loading && <Preloader />}
+      {/* Show the sign-in modal and pass the sign-in handler */}
+      <SignInModal onSignIn={handleSignIn} />
 
-      {/* Display error if there's an issue */}
+      {loading && <Preloader />}
       {error && <p className="error">{error}</p>}
 
-      {/* Display NewsCardList component if articles are fetched */}
       {articles.length > 0 && (
         <section className="news-cards">
-          <NewsCardList articles={articles} />{" "}
-          {/* Pass articles to NewsCardList */}
+          <NewsCardList
+            articles={articles}
+            savedArticles={savedArticles}
+            onSave={handleSaveArticle}
+            isUserLoggedIn={isUserLoggedIn}
+          />
         </section>
       )}
 
-      {/* About section */}
       <About />
     </main>
   );
