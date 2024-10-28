@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "../Main/Main"; // Main page component
 import Footer from "../Footer/Footer"; // Footer component
 import SavedNews from "../SavedNews/SavedNews"; // Saved news page component
