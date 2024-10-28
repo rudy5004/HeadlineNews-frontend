@@ -1,11 +1,7 @@
-// vite.config.js
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 3000, // Change to port 3000
-  },
+  base: "/headline_news_frontend/", // Adjusted for GitHub Pages
 });
