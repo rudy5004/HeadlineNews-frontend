@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import RegistrationSuccessModal from "../../components/RegistrationSuccessModal/RegistrationSuccessModal";
 
 function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
-  // Add onSignIn prop
+  // Generate unique IDs for each instance
+  const emailId = useId();
+  const usernameId = useId();
+  const passwordId = useId();
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +49,7 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
       localStorage.setItem("email", email);
       localStorage.setItem("isLoggedIn", "true");
 
-      onSignIn(); // Call this to immediately update state in Main.jsx
+      onSignIn();
 
       setShowSuccessModal(true);
       setTimeout(() => {
@@ -69,12 +73,12 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
       >
         {/* Email Field */}
         <div className="popup__input-container">
-          <label htmlFor="email" className="popup__label">
+          <label htmlFor={emailId} className="popup__label">
             Email
           </label>
           <input
             type="email"
-            id="email"
+            id={emailId}
             placeholder="Enter email"
             required
             className="popup__input"
@@ -85,12 +89,12 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
 
         {/* Username Field */}
         <div className="popup__input-container">
-          <label htmlFor="username" className="popup__label">
+          <label htmlFor={usernameId} className="popup__label">
             Username
           </label>
           <input
             type="text"
-            id="username"
+            id={usernameId}
             placeholder="Enter your username"
             required
             className="popup__input"
@@ -102,19 +106,20 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
           )}
         </div>
 
-        {/* Password Field */}
+        {/* Password Field with autocomplete */}
         <div className="popup__input-container">
-          <label htmlFor="password" className="popup__label">
+          <label htmlFor={passwordId} className="popup__label">
             Password
           </label>
           <input
             type="password"
-            id="password"
+            id={passwordId}
             placeholder="Enter password (min 6 characters)"
             required
             className="popup__input"
             value={password}
             onChange={handlePasswordChange}
+            autoComplete="new-password" // Set autocomplete attribute for password input
           />
         </div>
 
