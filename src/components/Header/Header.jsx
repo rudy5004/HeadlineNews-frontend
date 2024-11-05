@@ -20,13 +20,13 @@ function Header() {
   const handleSignInPopupOpen = () => {
     setIsSignInPopupOpen(true);
     setIsSignUpPopupOpen(false);
-    setIsMenuOpen(false); // Ensure the menu overlay closes when Sign In is clicked at 320px
+    setIsMenuOpen(false);
   };
 
   const handleSignUpPopupOpen = () => {
     setIsSignUpPopupOpen(true);
     setIsSignInPopupOpen(false);
-    setIsMenuOpen(false); // Ensure the menu overlay closes when Sign Up is clicked at 320px
+    setIsMenuOpen(false);
   };
 
   const handlePopupClose = () => {
@@ -95,7 +95,7 @@ function Header() {
           />
         </Link>
 
-        {/* Menu icon, visible only at 320px breakpoint */}
+        {/* Menu icon */}
         <img
           src={MenuIcon}
           alt="Menu icon"
@@ -103,7 +103,6 @@ function Header() {
           onClick={handleMenuToggle}
         />
 
-        {/* Main navigation links (visible by default, hidden in overlay) */}
         <ul
           className={`header__menu ${isMenuOpen ? "header__menu--open" : ""}`}
         >
@@ -129,7 +128,6 @@ function Header() {
           </li>
         </ul>
 
-        {/* Menu Overlay */}
         {isMenuOpen && (
           <div className="header__menu-overlay">
             <img
@@ -143,7 +141,7 @@ function Header() {
                 <Link
                   to="/"
                   className="header__link"
-                  onClick={handleMenuToggle} // Close overlay when Home is clicked
+                  onClick={handleMenuToggle}
                 >
                   Home
                 </Link>
@@ -151,7 +149,7 @@ function Header() {
 
               <li className="header__item">
                 <button
-                  onClick={handleSignInPopupOpen} // Close overlay when Sign In is clicked
+                  onClick={handleSignInPopupOpen}
                   className="header__login-button"
                 >
                   Sign in
@@ -163,7 +161,6 @@ function Header() {
       </nav>
       <div className="header__horizontal-line"></div>
 
-      {/* Sign-in Popup */}
       <PopupWithForm
         isOpen={isSignInPopupOpen}
         onClose={handlePopupClose}
@@ -172,12 +169,12 @@ function Header() {
         onSubmit={handleSubmit}
       >
         <div className="popup__input-container">
-          <label htmlFor="email" className="popup__label">
+          <label htmlFor="signin-email" className="popup__label">
             Email
           </label>
           <input
             type="email"
-            id="email"
+            id="signin-email"
             placeholder="Enter email"
             required
             className="popup__input"
@@ -188,12 +185,12 @@ function Header() {
         </div>
 
         <div className="popup__input-container">
-          <label htmlFor="password" className="popup__label">
+          <label htmlFor="signin-password" className="popup__label">
             Password
           </label>
           <input
             type="password"
-            id="password"
+            id="signin-password"
             placeholder="Enter password"
             required
             className="popup__input"
@@ -212,7 +209,6 @@ function Header() {
         </div>
       </PopupWithForm>
 
-      {/* Sign-up Popup */}
       <SignUpModal
         isOpen={isSignUpPopupOpen}
         onClose={handlePopupClose}
@@ -221,7 +217,7 @@ function Header() {
           console.log("Sign up form submitted:", data);
           handlePopupClose();
         }}
-        onSignInClick={handleSignInPopupOpen}
+        onSignIn={handleSignInPopupOpen} // Change here
       />
     </header>
   );
