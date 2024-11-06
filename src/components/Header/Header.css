@@ -46,7 +46,7 @@
   align-items: center;
 }
 
-/* Styling for links and buttons */
+/* Styling for links */
 .header__link {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
@@ -88,7 +88,7 @@
 }
 
 /* Sign-in button */
-.header__login-button {
+.header__login-button--sign-in {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
@@ -100,6 +100,26 @@
   cursor: pointer;
   outline: none;
   text-align: center;
+  transition: 0.3s ease, color 0.3s ease;
+}
+
+.header__login-button--saved-articles {
+  background: transparent;
+  /* border: 1px solid #fff; */
+  color: #fff;
+  border-radius: 50px;
+  width: 152px;
+  height: 51px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  display: flex; /* Centering */
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+  text-decoration: none; /* Remove underline */
   transition: 0.3s ease, color 0.3s ease;
 }
 
@@ -143,7 +163,7 @@
   display: flex;
 }
 
-/* Make sure the "Sign in" and "Home" buttons are visible by default */
+/* Ensure "Sign in" and "Home" buttons are visible by default */
 .header__link,
 .header__login-button {
   visibility: visible;
@@ -174,7 +194,8 @@
     bottom: -27px;
   }
 
-  .header__login-button {
+  .header__login-button--sign-in,
+  .header__login-button--saved-articles {
     padding: 8px 16px;
     font-size: 14px;
     height: 41px;
@@ -200,7 +221,8 @@
   }
 
   .header__link,
-  .header__login-button {
+  .header__login-button--sign-in,
+  .header__login-button--saved-articles {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -239,7 +261,8 @@
 
   /* Ensure Home and Sign In buttons are visible in the overlay */
   .header__menu-overlay .header__link,
-  .header__menu-overlay .header__login-button {
+  .header__menu-overlay .header__login-button--sign-in,
+  .header__menu-overlay .header__login-button--saved-articles {
     visibility: visible;
     opacity: 1;
     pointer-events: all;

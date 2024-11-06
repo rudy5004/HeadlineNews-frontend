@@ -14,6 +14,7 @@ function Header() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   const location = useLocation();
 
@@ -80,6 +81,7 @@ function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
+      setIsSignedIn(true);
       handlePopupClose();
     }
   };
@@ -119,12 +121,21 @@ function Header() {
           </li>
 
           <li className="header__item">
-            <button
-              onClick={handleSignInPopupOpen}
-              className="header__login-button"
-            >
-              Sign in
-            </button>
+            {isSignedIn ? (
+              <Link
+                to="/saved-news"
+                className="header__login-button header__login-button--saved-articles"
+              >
+                Saved Articles
+              </Link>
+            ) : (
+              <button
+                onClick={handleSignInPopupOpen}
+                className="header__login-button header__login-button--sign-in"
+              >
+                Sign in
+              </button>
+            )}
           </li>
         </ul>
 
@@ -148,12 +159,22 @@ function Header() {
               </li>
 
               <li className="header__item">
-                <button
-                  onClick={handleSignInPopupOpen}
-                  className="header__login-button"
-                >
-                  Sign in
-                </button>
+                {isSignedIn ? (
+                  <Link
+                    to="/saved-articles"
+                    className="header__login-button header__login-button--saved-articles"
+                    onClick={handleMenuToggle}
+                  >
+                    Saved Articles
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleSignInPopupOpen}
+                    className="header__login-button header__login-button--sign-in"
+                  >
+                    Sign in
+                  </button>
+                )}
               </li>
             </ul>
           </div>
@@ -217,7 +238,7 @@ function Header() {
           console.log("Sign up form submitted:", data);
           handlePopupClose();
         }}
-        onSignIn={handleSignInPopupOpen} // Change here
+        onSignIn={handleSignInPopupOpen}
       />
     </header>
   );
