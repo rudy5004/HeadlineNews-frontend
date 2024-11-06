@@ -1,5 +1,5 @@
 const API_KEY = "241d2d8b21e74f8481bedeaadbcb79d9"; // Your API key
-const BASE_URL = "https://newsapi.org/v2";
+const BASE_URL = "https://nomoreparties.co/news/v2"; // Proxy server URL
 
 export const fetchNews = async (query) => {
   const url = `${BASE_URL}/everything?q=${query}&from=${getLast7Days()}&to=${getCurrentDate()}&pageSize=100&apiKey=${API_KEY}`;
