@@ -18,6 +18,12 @@ function Header() {
 
   const location = useLocation();
 
+  // Check for token in localStorage on mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsSignedIn(!!token); // Set isSignedIn based on token presence
+  }, []);
+
   const handleSignInPopupOpen = () => {
     setIsSignInPopupOpen(true);
     setIsSignUpPopupOpen(false);
@@ -81,6 +87,8 @@ function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
+      // Simulate signing in by setting a token
+      localStorage.setItem("token", "your-token-here");
       setIsSignedIn(true);
       handlePopupClose();
     }
@@ -125,6 +133,7 @@ function Header() {
               <Link
                 to="/saved-news"
                 className="header__login-button header__login-button--saved-articles"
+                onClick={handleMenuToggle}
               >
                 Saved Articles
               </Link>
@@ -161,7 +170,7 @@ function Header() {
               <li className="header__item">
                 {isSignedIn ? (
                   <Link
-                    to="/saved-articles"
+                    to="/saved-news"
                     className="header__login-button header__login-button--saved-articles"
                     onClick={handleMenuToggle}
                   >
