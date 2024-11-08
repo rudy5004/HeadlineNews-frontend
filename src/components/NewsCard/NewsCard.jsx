@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./NewsCard.css";
-import savedIcon from "../../assets/savedIcon.svg"; // Import saved icon
-import notSavedIcon from "../../assets/notSavedIcon.svg"; // Grey default icon
-import notSavedIconHover from "../../assets/notSavedIconHover.svg"; // Black hover icon
-import defaultImage from "../../assets/Nature.svg"; // Default image
+import savedIcon from "../../assets/savedIcon.svg";
+import notSavedIcon from "../../assets/notSavedIcon.svg";
+import notSavedIconHover from "../../assets/notSavedIconHover.svg";
+import GreyDeleteButton from "../../assets/GreyDeleteButton.svg";
+import BlackDeleteButton from "../../assets/BlackDeleteButton.svg";
+import defaultImage from "../../assets/Nature.svg";
 
 function NewsCard({ article, isUserLoggedIn, onSave }) {
-  const [isSaved, setIsSaved] = useState(false); // Track save status
-  const [isIconHovered, setIsIconHovered] = useState(false); // Track hover state
+  const [isSaved, setIsSaved] = useState(false);
+  const [isIconHovered, setIsIconHovered] = useState(false);
+  const location = useLocation();
 
   // Check if the article is already saved
   useEffect(() => {
@@ -25,9 +28,21 @@ function NewsCard({ article, isUserLoggedIn, onSave }) {
       alert("Please sign in to save articles.");
       return;
     }
-    onSave(article); // Call save handler
-    setIsSaved((prevState) => !prevState); // Toggle saved state
+    onSave(article);
+    setIsSaved((prevState) => !prevState);
   };
+
+  // Determine if the current page is /saved-news
+  const isSavedNewsPage = location.pathname === "/saved-news";
+
+  // Determine which icon to display based on the page and hover state
+  const iconSrc = (() => {
+    if (isSaved) return savedIcon;
+    if (isSavedNewsPage) {
+      return isIconHovered ? BlackDeleteButton : GreyDeleteButton;
+    }
+    return isIconHovered ? notSavedIconHover : notSavedIcon;
+  })();
 
   const imageSrc = article.urlToImage?.startsWith("http")
     ? article.urlToImage
@@ -50,21 +65,18 @@ function NewsCard({ article, isUserLoggedIn, onSave }) {
         onError={(e) => (e.target.src = defaultImage)}
       />
 
-      {/* Save icon */}
+      {/* Save icon with text */}
       <div
         className="news-card__save-icon-container"
         onMouseEnter={() => setIsIconHovered(true)}
         onMouseLeave={() => setIsIconHovered(false)}
         onClick={handleSaveClick}
       >
+        {isSavedNewsPage && (
+          <span className="news-card__remove-text">Remove from saved</span>
+        )}
         <img
-          src={
-            isSaved
-              ? savedIcon
-              : isIconHovered
-              ? notSavedIconHover
-              : notSavedIcon
-          }
+          src={iconSrc}
           alt={isSaved ? "Saved" : "Not saved"}
           className="news-card__save-icon"
         />

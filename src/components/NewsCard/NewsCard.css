@@ -26,50 +26,53 @@
   border-top-right-radius: 8px;
 }
 
-/* Save Icon Styling */
+/* Save Icon Container Styling */
 .news-card__save-icon-container {
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 40px;
-  height: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
   cursor: pointer;
 }
 
-.news-card__save-icon {
-  width: 100%;
-  height: 100%;
-  transition: filter 0.3s ease;
-  filter: grayscale(100%); /* Grey by default */
-}
-
-.news-card__save-icon-container:hover .news-card__save-icon {
-  filter: grayscale(0); /* Turn black on hover */
-}
-
-/* Hover Box for text next to the icon */
-.news-card__hover-box {
+/* Remove Text Styling */
+.news-card__remove-text {
+  padding: 11px 26px;
   background-color: white;
   color: black;
-  padding: 0px 8px;
   border-radius: 4px;
-  height: 40px; /* Same height as the icon */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to match the card */
+  font-size: 12px;
+  line-height: 14.06px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.news-card__save-icon-container:hover .news-card__hover-box {
+/* Save Icon Styling */
+.news-card__save-icon {
+  width: 40px;
+  height: 40px;
+  transition: filter 0.3s ease;
+  filter: grayscale(100%);
+}
+
+/* Hover Behavior for /saved-news page */
+.saved-news .news-card__save-icon-container:hover .news-card__save-icon {
+  filter: grayscale(0);
+  content: url("../../assets/BlackDeleteButton.svg"); /* Switch to black delete icon */
+}
+
+.saved-news .news-card__save-icon-container:hover .news-card__remove-text {
   opacity: 1;
 }
 
-/* Other Content Styling */
+/* Content Styling */
 .news-card__content {
   padding: 17px 24px 24px;
   display: flex;
@@ -141,16 +144,15 @@
     font-size: 22px;
   }
 
-  /* Description Styling with Ellipsis for Long Text */
   .news-card__description {
     font-size: 16px;
     line-height: 22px;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box; /* Required for multi-line truncation */
-    -webkit-line-clamp: 4; /* Limits the text to 4 lines */
-    -webkit-box-orient: vertical; /* Ensures vertical orientation for the clamp */
-    white-space: normal; /* Allows the text to wrap normally */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
     margin-top: 0;
   }
 
