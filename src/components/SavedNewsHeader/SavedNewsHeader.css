@@ -1,8 +1,10 @@
+/* Block: saved-news-header */
 .saved-news-header {
   padding: 30px 104px 0;
   font-family: "Roboto", sans-serif;
 }
 
+/* Element: Navigation */
 .saved-news-header__nav {
   display: flex;
   justify-content: space-between;
@@ -11,25 +13,39 @@
   margin: 0 auto;
 }
 
+/* Element: Logo */
 .saved-news-header__logo {
   margin-right: auto;
 }
 
+.saved-news-header__logo-img {
+  width: auto;
+  height: auto;
+}
+
+/* Element: Right Section */
 .saved-news-header__right {
   display: flex;
   align-items: center;
   gap: 64px;
 }
 
+/* Element: Menu */
 .saved-news-header__menu {
   display: flex;
   align-items: center;
-  gap: 76px; /* Set gap to 76px between menu items */
+  gap: 76px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* Element: Menu Item */
+.saved-news-header__item {
+  list-style: none;
+}
+
+/* Element: Link */
 .saved-news-header__link {
   color: rgba(26, 27, 34, 1);
   font-weight: 500;
@@ -41,30 +57,12 @@
   display: inline-block;
 }
 
-/* Horizontal line for the header */
-.saved-news-header__horizontal-line {
-  position: absolute;
-  top: 72px;
-  left: 0;
-  width: 100vw;
-  height: 1px;
-  background-color: rgba(196, 196, 196, 0.3);
-  z-index: 10000;
+/* Modifier: Active Link */
+.saved-news-header__link--active {
+  font-weight: bold;
 }
 
-/* Horizontal line inside the menu overlay */
-.saved-news-header__overlay-horizontal-line {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(
-    196,
-    196,
-    196,
-    0.3
-  ); /* Same color as the header line */
-  margin: 16px 0; /* Add some margin around it if needed */
-}
-
+/* Element: Underline */
 .saved-news-header__underline {
   position: absolute;
   height: 2px;
@@ -76,165 +74,167 @@
   top: 84px;
 }
 
-/* Remove underline for Home link */
-.saved-news-header__link:not(.saved-news-header__link--active)::after {
-  display: none;
+/* Element: Horizontal Line */
+.saved-news-header__horizontal-line {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background-color: rgba(196, 196, 196, 0.3);
+  z-index: 10000;
 }
 
-/* Elise button with logout icon */
+/* Element: Elise Button */
 .saved-news-header__elise-button {
-  display: flex; /* Flexbox for aligning text and icon */
+  display: flex;
   align-items: center;
-  gap: 10px; /* Space between text and icon */
+  gap: 10px;
   background-color: transparent;
   border: 1px solid rgba(26, 27, 34, 1);
   color: rgba(26, 27, 34, 1);
   padding: 10px 20px;
-  border-radius: 50px; /* Match rounded corners */
+  border-radius: 50px;
   cursor: pointer;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  transition: none; /* No color or background transition */
-  width: auto; /* Dynamic width based on content */
 }
 
-.saved-news-header__elise-button img {
-  width: 20px; /* Adjust the size of the logout icon */
+.saved-news-header__elise-button-icon {
+  width: 20px;
   height: 20px;
 }
 
-/* Ensure full-width line across the screen */
-.saved-news-header__horizontal-line {
-  position: absolute;
-  left: 0;
-  width: 100vw; /* Ensure the full width of the screen */
-  height: 1px;
-  background-color: rgba(26, 27, 34, 0.3);
-  margin-top: 16px;
-  z-index: 10000; /* Bring it to the front */
+/* Element: Menu Icon */
+.saved-news-header__menu-icon {
+  display: none;
+  cursor: pointer;
 }
 
+/* Modifier: Open State */
+.saved-news-header__right--open {
+  display: flex;
+}
+
+/* Element: Menu Overlay */
+.saved-news-header__menu-overlay {
+  display: flex;
+  flex-direction: column;
+  height: 230px;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Element: Menu Close Icon */
+.saved-news-header__menu-close {
+  position: absolute;
+  top: 16px;
+  right: 66px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+/* Element: Overlay Content */
+.saved-news-header__overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Element: Overlay Logo */
+.saved-news-header__overlay-logo {
+  margin-bottom: 30px;
+}
+
+/* Element: Overlay Menu */
+.saved-news-header__overlay-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.saved-news-header__overlay-item {
+  margin-bottom: 20px;
+}
+
+/* Element: Overlay Horizontal Line */
+.saved-news-header__overlay-horizontal-line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(196, 196, 196, 0.3);
+  margin: 16px 0;
+}
+
+/* Responsive Styles */
 @media (max-width: 720px) {
   .saved-news-header {
-    padding: 30px 40px 0 40px;
+    padding: 30px 40px 0;
   }
 
   .saved-news-header__right {
     gap: 40px;
   }
+
   .saved-news-header__menu {
     gap: 40px;
   }
+
   .saved-news-header__link {
     font-size: 16px;
   }
+
   .saved-news-header__elise-button {
     font-size: 16px;
   }
+
   .saved-news-header__underline {
     right: 106px;
   }
 }
 
-/* Hide the menu icon outside the 320px breakpoint */
 @media (min-width: 321px) {
   .saved-news-header__menu-icon {
-    display: none; /* Hide menu icon for larger screens */
+    display: none;
   }
 }
 
-/* Initially hide the Home and Saved Articles buttons at 320px */
-/* Initially hide the Home and Saved Articles buttons at 320px */
 @media (max-width: 320px) {
+  .saved-news {
+    padding: 0px 16px 0px 16px;
+  }
+  .saved-news-header {
+    padding: 16px 16px 0px 16px;
+  }
   .saved-news-header__right {
-    display: none; /* Hide the links and buttons by default */
+    display: none;
   }
 
-  /* When the menu is open, display the buttons */
-  .saved-news-header__right.open {
+  .saved-news-header__right--open {
     display: flex;
+  }
+
+  .saved-news-header__logo-img {
+    width: 117px;
+    height: 24px;
   }
 
   .saved-news-header__menu-icon {
     display: block;
-    cursor: pointer;
   }
 
-  .saved-news-header__menu-overlay {
-    display: flex;
-    flex-direction: column;
-    height: 230px; /* Set the height to 230px */
-    background-color: rgba(
-      255,
-      255,
-      255,
-      1
-    ); /* Solid white background for the box */
-    z-index: 9999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow to emphasize the box */
-  }
-
-  .saved-news-header__menu-close {
-    position: absolute;
-    top: 16px;
-    right: 66px;
-    cursor: pointer;
-    height: 24px;
-    width: 24px;
-  }
-
-  .saved-news-header__overlay-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .saved-news-header__overlay-logo {
-    margin-bottom: 30px;
-  }
-
-  .saved-news-header__overlay-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .saved-news-header__overlay-item {
-    margin-bottom: 20px;
-  }
-
-  .saved-news-header__link {
-    color: black; /* Black text for Home and Saved articles */
-    font-size: 1.125rem; /* 18px in decimal (rem) */
-    line-height: 3.5rem; /* 56px in decimal (rem) */
-    text-decoration: none;
-  }
-
-  .saved-news-header__link.saved-news-header__link--active {
-    font-weight: bold; /* Highlight active link */
-  }
-
-  /* Horizontal line spanning the full width of the page */
   .saved-news-header__horizontal-line {
-    position: absolute;
-    left: 0;
-    width: 100vw; /* Full width to avoid shortness */
-    height: 1px;
-    background-color: rgba(196, 196, 196, 0.3);
-    z-index: 10000;
-    top: 72px; /* Adjust to the desired position */
-    margin-top: 0; /* Remove any additional margins */
+    top: 52px;
   }
 
-  /* Remove any extra or conflicting horizontal lines */
   .saved-news-header__overlay-horizontal-line {
-    display: none; /* Ensure no second horizontal line is created */
+    display: none;
   }
 }
