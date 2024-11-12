@@ -11,7 +11,7 @@ function App() {
 
   const [savedArticles] = useState([
     {
-      title: "Everyone Needs a Special 'Sit Spot' in Nature",
+      title: "'Sit Spot' in Nature",
       keyword: "Nature",
       imageUrl: "/path/to/image1.jpg", // Replace with actual image path or URL
       publishedAt: "November 4, 2020",
@@ -29,7 +29,7 @@ function App() {
       source: { name: "National Geographic" },
     },
     {
-      title: "Nostalgic Photos of Tourists in U.S. National Parks",
+      title: "Nostalgic Photos",
       keyword: "Yellowstone",
       imageUrl: "/path/to/image3.jpg", // Replace with actual image path or URL
       publishedAt: "October 19, 2020",
@@ -38,7 +38,7 @@ function App() {
       source: { name: "National Geographic" },
     },
     {
-      title: "Grand Teton Renews Historic Crest Trail",
+      title: "Grand Teton Trail",
       keyword: "Parks",
       imageUrl: "/path/to/image4.jpg", // Replace with actual image path or URL
       publishedAt: "November 4, 2020",
@@ -47,7 +47,7 @@ function App() {
       source: { name: "National Parks Traveler" },
     },
     {
-      title: "Scientists Don't Know Why Polaris Is So Weird",
+      title: "Scientists Discrepancies",
       keyword: "Photography",
       imageUrl: "/path/to/image5.jpg", // Replace with actual image path or URL
       publishedAt: "March 16, 2020",

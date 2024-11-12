@@ -129,7 +129,7 @@
 @media screen and (max-width: 720px) {
   .news-card {
     width: 224px;
-    height: 420px;
+    height: 440px;
   }
 
   .news-card__image {
@@ -179,5 +179,16 @@
     margin: 0 auto;
     width: 100%;
     margin-top: 16px;
+    height: 420px;
+  }
+  .news-card__date {
+    margin-bottom: 10px;
+    line-height: 24px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 24px;
+    margin-bottom: 14px;
   }
 }

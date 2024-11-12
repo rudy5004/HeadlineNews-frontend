@@ -1,4 +1,4 @@
-/* General Header Styling */
+/* Block: Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-/* Flex container for logo and nav */
+/* Element: Nav Container */
 .header__nav {
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-/* Logo styling */
+/* Element: Logo */
 .header__logo {
   font-size: 24px;
   font-family: "Roboto", sans-serif;
@@ -29,7 +29,7 @@
   z-index: 2;
 }
 
-/* Navigation menu styling */
+/* Element: Menu */
 .header__menu {
   display: flex;
   justify-content: center;
@@ -40,13 +40,13 @@
   padding: 0;
 }
 
-/* Styling for individual menu items */
+/* Element: Menu Item */
 .header__item {
   display: flex;
   align-items: center;
 }
 
-/* Styling for links */
+/* Element: Link */
 .header__link {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
@@ -58,12 +58,11 @@
   z-index: 2;
 }
 
-/* Remove hover underline */
 .header__link:hover {
   text-decoration: none;
 }
 
-/* White underline for active link (e.g., Home) */
+/* Modifier: Active Link */
 .header__link--active::after {
   content: "";
   position: absolute;
@@ -76,7 +75,7 @@
   z-index: 2;
 }
 
-/* Black horizontal line across the page */
+/* Element: Horizontal Line */
 .header__horizontal-line {
   position: absolute;
   bottom: 0;
@@ -87,7 +86,7 @@
   z-index: 2;
 }
 
-/* Sign-in button */
+/* Modifier: Sign-In Button */
 .header__login-button--sign-in {
   background: transparent;
   border: 1px solid #fff;
@@ -103,9 +102,9 @@
   transition: 0.3s ease, color 0.3s ease;
 }
 
+/* Modifier: Saved Articles Button */
 .header__login-button--saved-articles {
   background: transparent;
-  /* border: 1px solid #fff; */
   color: #fff;
   border-radius: 50px;
   width: 152px;
@@ -116,14 +115,14 @@
   cursor: pointer;
   outline: none;
   text-align: center;
-  display: flex; /* Centering */
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  text-decoration: none; /* Remove underline */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   transition: 0.3s ease, color 0.3s ease;
 }
 
-/* Menu icon, initially hidden */
+/* Element: Menu Icon */
 .header__menu-icon {
   display: none;
   position: absolute;
@@ -134,7 +133,7 @@
   cursor: pointer;
 }
 
-/* Menu overlay */
+/* Element: Menu Overlay */
 .header__menu-overlay {
   display: none;
   position: absolute;
@@ -148,7 +147,7 @@
   justify-content: center;
 }
 
-/* Close icon in the top-right corner */
+/* Element: Menu Close Icon */
 .header__menu-close {
   position: absolute;
   top: 16px;
@@ -158,12 +157,12 @@
   cursor: pointer;
 }
 
-/* Show the menu overlay when the menu is open */
+/* Modifier: Open Menu */
 .header__menu--open .header__menu-overlay {
   display: flex;
 }
 
-/* Ensure "Sign in" and "Home" buttons are visible by default */
+/* Ensure visibility of Sign-In and Home buttons */
 .header__link,
 .header__login-button {
   visibility: visible;
@@ -172,7 +171,7 @@
   display: inline-block;
 }
 
-/* Responsive Media Query for 720px and below */
+/* Responsive Media Queries */
 @media (max-width: 720px) {
   .header {
     padding: 15px 30px;
@@ -202,11 +201,15 @@
   }
 }
 
-/* Responsive Media Query for 320px and below */
 @media (max-width: 320px) {
+  .header {
+    padding: 16px 16px;
+  }
+
   .header__menu-close {
     right: 63px;
   }
+
   .header__menu {
     flex-direction: column;
     align-items: flex-start;
@@ -246,12 +249,16 @@
     font-size: 24px;
     position: relative;
     z-index: 10000;
-    margin-top: 16px;
+  }
+
+  .header__logo-img {
+    width: 117px;
+    height: 24px;
   }
 
   .header__horizontal-line {
     position: absolute;
-    top: 72px;
+    top: 53px;
     left: 0;
     width: 100vw;
     height: 1px;
@@ -259,7 +266,11 @@
     z-index: 10000;
   }
 
-  /* Ensure Home and Sign In buttons are visible in the overlay */
+  .header__login-button--saved-articles {
+    padding: 0 0 16px 0;
+    text-align: left;
+  }
+
   .header__menu-overlay .header__link,
   .header__menu-overlay .header__login-button--sign-in,
   .header__menu-overlay .header__login-button--saved-articles {

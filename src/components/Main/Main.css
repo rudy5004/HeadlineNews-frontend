@@ -62,17 +62,21 @@
 @media (max-width: 320px) {
   .main__title-container {
     width: 90%;
-    margin-top: 40px;
+    margin-top: 12px;
   }
 
   .main__title {
-    font-size: 32px;
-    line-height: 36px;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 400px;
   }
 
   .main__subtitle {
     margin-left: 16px;
     margin-right: 16px;
+    margin-top: 12px;
     text-align: left;
+    font-size: 18px;
+    line-height: 24px;
   }
 }

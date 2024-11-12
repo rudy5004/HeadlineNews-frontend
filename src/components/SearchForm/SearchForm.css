@@ -56,17 +56,20 @@
 }
 
 @media (max-width: 320px) {
+  .search-form {
+    padding-left: 8px;
+  }
   .search-form__input {
     width: 272px;
     padding-left: 16px;
     position: absolute;
-    top: 40px;
+    top: 32px;
     right: 22px;
   }
   .search-form__button {
     min-width: 288px;
     max-height: 56px;
     right: 22px;
-    bottom: -105px;
+    bottom: -98px;
   }
 }
