@@ -68,10 +68,10 @@ function App() {
           <Route
             path="/saved-news"
             element={
-              <>
+              <div>
                 <SavedNewsHeader user={user} />
                 <SavedNews user={user} savedArticles={savedArticles} />
-              </>
+              </div>
             }
           />
         </Routes>

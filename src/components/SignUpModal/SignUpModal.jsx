@@ -63,7 +63,7 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
   }, [email, username, password]);
 
   return (
-    <>
+    <div>
       <PopupWithForm
         isOpen={isOpen}
         onClose={onClose}
@@ -119,7 +119,7 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
             className="popup__input"
             value={password}
             onChange={handlePasswordChange}
-            autoComplete="new-password" // Set autocomplete attribute for password input
+            autoComplete="new-password"
           />
         </div>
 
@@ -136,7 +136,7 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
           />
         )}
       </PopupWithForm>
-    </>
+    </div>
   );
 }
 
