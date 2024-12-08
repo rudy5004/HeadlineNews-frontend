@@ -22,7 +22,7 @@ function NewsCardList({ articles, isUserLoggedIn, onSave }) {
         ))}
       </div>
 
-      {/* Show "Show More" button only if there are more articles to show */}
+      {/* Show "Show More" button here within the news-card-list */}
       {visibleCount < articles.length && (
         <button className="news-card-list__show-more" onClick={handleShowMore}>
           Show More
