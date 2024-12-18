@@ -168,7 +168,6 @@
   visibility: visible;
   opacity: 1;
   pointer-events: all;
-  display: inline-block;
 }
 
 /* Responsive Media Queries */
