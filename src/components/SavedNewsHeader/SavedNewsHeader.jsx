@@ -6,8 +6,17 @@ import BlackCloseIcon from "../../assets/blackClose.svg"; // Close icon
 import LogoutIcon from "../../assets/logout.svg";
 import "./SavedNewsHeader.css"; // Custom CSS for this header
 
-function SavedNewsHeader({ user }) {
+function SavedNewsHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    // Retrieve the username from localStorage
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   // Toggle menu overlay
   const handleMenuToggle = () => {
@@ -51,7 +60,7 @@ function SavedNewsHeader({ user }) {
           onClick={handleMenuToggle} // Handle menu toggle
         />
 
-        {/* Links and Elise button on the far right (hidden at 320px when menu isn't clicked) */}
+        {/* Links and Username button on the far right (hidden at 320px when menu isn't clicked) */}
         <div className={`saved-news-header__right ${isMenuOpen ? "open" : ""}`}>
           <ul className="saved-news-header__menu">
             <li className="saved-news-header__item">
@@ -72,11 +81,13 @@ function SavedNewsHeader({ user }) {
             </li>
           </ul>
 
-          {/* Elise button with Logout icon */}
-          <button className="saved-news-header__elise-button">
-            {user.name}
-            <img src={LogoutIcon} alt="Logout icon" />
-          </button>
+          {/* Username button with Logout icon */}
+          {username && (
+            <button className="saved-news-header__username-button">
+              {username}
+              <img src={LogoutIcon} alt="Logout icon" />
+            </button>
+          )}
         </div>
       </nav>
 
