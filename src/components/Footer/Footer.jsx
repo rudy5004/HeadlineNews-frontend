@@ -10,7 +10,14 @@ function Footer() {
     <footer className="footer">
       <div className="footer__content">
         <p className="footer__copyright">
-          © 2024 Supersite, Powered by News API
+          <a
+            href="https://newsapi.org/"
+            className="footer__link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            © 2024 Supersite, Powered by News API
+          </a>
         </p>
         <nav className="footer__nav">
           <a href="/" className="footer__link">
