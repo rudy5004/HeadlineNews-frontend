@@ -125,6 +125,28 @@
   text-decoration: underline;
 }
 
+/* Footer styling */
+.popup__footer {
+  margin-top: 20px; /* Space above footer */
+  text-align: center;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.popup__footer span {
+  color: #333; /* Normal text color */
+}
+
+.popup__footer .popup__link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.popup__footer .popup__link:hover {
+  text-decoration: underline;
+}
+
 /* Sign In button */
 .popup__submit {
   padding: 20px;

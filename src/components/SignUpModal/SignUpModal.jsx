@@ -128,6 +128,21 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
           Sign Up
         </button>
 
+        {/* Footer with Sign In Link */}
+        <div className="popup__footer">
+          <span>or </span>
+          <a
+            href="#"
+            className="popup__link"
+            onClick={(e) => {
+              e.preventDefault();
+              onSignIn();
+            }}
+          >
+            Sign In
+          </a>
+        </div>
+
         {/* Success Modal */}
         {showSuccessModal && (
           <RegistrationSuccessModal
