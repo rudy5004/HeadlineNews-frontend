@@ -1,4 +1,5 @@
 /* App.css */
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -6,6 +7,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Block styles */
 .app {
   display: flex;
   flex-direction: column;
@@ -13,7 +15,8 @@ body {
   max-width: 100%;
 }
 
-.app main {
+/* Element styles */
+.app__main {
   flex: 1; /* Ensures the main content takes up available space */
 }
 
