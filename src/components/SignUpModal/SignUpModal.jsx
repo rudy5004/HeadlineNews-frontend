@@ -15,36 +15,38 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
   const [isFormValid, setIsFormValid] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const validateForm = () => {
+  // Validate form whenever input states change
+  useEffect(() => {
     const isUsernameValid = username.length > 0 && !usernameError;
     const isPasswordValid = password.length >= 6;
-    setIsFormValid(isUsernameValid && isPasswordValid && email.includes("@"));
-  };
+    const isEmailValid = email.includes("@");
+
+    setIsFormValid(isUsernameValid && isPasswordValid && isEmailValid);
+  }, [email, username, password, usernameError]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    validateForm();
   };
 
   const handleUsernameChange = (e) => {
     const value = e.target.value;
     setUsername(value);
+
     if (["existingUser", "takenUsername"].includes(value)) {
       setUsernameError("Username isn't available");
     } else {
       setUsernameError("");
     }
-    validateForm();
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    validateForm();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
+      // Simulate successful registration
       localStorage.setItem("username", username);
       localStorage.setItem("email", email);
       localStorage.setItem("isLoggedIn", "true");
@@ -52,15 +54,13 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
       onSignIn();
 
       setShowSuccessModal(true);
+
       setTimeout(() => {
+        setShowSuccessModal(false);
         onClose();
-      }, 200);
+      }, 2000); // Display success modal for 2 seconds
     }
   };
-
-  useEffect(() => {
-    validateForm();
-  }, [email, username, password]);
 
   return (
     <div>
@@ -106,7 +106,7 @@ function SignUpModal({ isOpen, onClose, onOverlayClick, onSignIn }) {
           )}
         </div>
 
-        {/* Password Field with autocomplete */}
+        {/* Password Field */}
         <div className="popup__input-container">
           <label htmlFor={passwordId} className="popup__label">
             Password

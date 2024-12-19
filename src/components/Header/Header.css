@@ -87,7 +87,7 @@
 }
 
 /* Modifier: Sign-In Button */
-.header__login-button--sign-in {
+.header__button--sign-in {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
@@ -99,11 +99,11 @@
   cursor: pointer;
   outline: none;
   text-align: center;
-  transition: 0.3s ease, color 0.3s ease;
+  transition: 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Modifier: Saved Articles Button */
-.header__login-button--saved-articles {
+.header__button--saved-articles {
   background: transparent;
   color: #fff;
   border-radius: 50px;
@@ -120,6 +120,34 @@
   justify-content: center;
   text-decoration: none;
   transition: 0.3s ease, color 0.3s ease;
+}
+
+/* Element: Username Button */
+.header__username-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 10px 20px;
+  transition: border 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.header__username-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Element: Logout Icon */
+.header__logout-icon {
+  width: 20px;
+  height: 20px;
 }
 
 /* Element: Menu Icon */
@@ -164,7 +192,7 @@
 
 /* Ensure visibility of Sign-In and Home buttons */
 .header__link,
-.header__login-button {
+.header__button {
   visibility: visible;
   opacity: 1;
   pointer-events: all;
@@ -192,8 +220,8 @@
     bottom: -27px;
   }
 
-  .header__login-button--sign-in,
-  .header__login-button--saved-articles {
+  .header__button--sign-in,
+  .header__button--saved-articles {
     padding: 8px 16px;
     font-size: 14px;
     height: 41px;
@@ -223,8 +251,8 @@
   }
 
   .header__link,
-  .header__login-button--sign-in,
-  .header__login-button--saved-articles {
+  .header__button--sign-in,
+  .header__button--saved-articles {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -265,14 +293,14 @@
     z-index: 10000;
   }
 
-  .header__login-button--saved-articles {
+  .header__button--saved-articles {
     padding: 0 0 16px 0;
     text-align: left;
   }
 
   .header__menu-overlay .header__link,
-  .header__menu-overlay .header__login-button--sign-in,
-  .header__menu-overlay .header__login-button--saved-articles {
+  .header__menu-overlay .header__button--sign-in,
+  .header__menu-overlay .header__button--saved-articles {
     visibility: visible;
     opacity: 1;
     pointer-events: all;
