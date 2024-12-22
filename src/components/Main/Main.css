@@ -41,6 +41,13 @@
   text-align: left;
 }
 
+.main__subtitle-container {
+  width: 100%; /* Ensure subtitle container spans the full width */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  text-align: center;
+}
+
 .main__subtitle {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
@@ -68,7 +75,7 @@
   .main__title {
     font-size: 36px;
     line-height: 40px;
-    font-weight: 400px;
+    font-weight: 400; /* Fixed typo from 400px to 400 */
   }
 
   .main__subtitle {

@@ -87,15 +87,13 @@ function Main() {
           <SearchForm onSearch={handleSearch} />
         </div>
       </section>
-
-      {/* Render Sign Up Modal and pass the handleSignIn function */}
       <SignUpModal onSignIn={handleSignIn} />
-
       {loading && <Preloader />}
-      {error && <p className="error">{error}</p>}
-
+      {error && <p className="main__error">{error}</p>} {/* Updated class */}
       {articles.length > 0 && (
-        <section className="news-cards">
+        <section className="main__news-cards">
+          {" "}
+          {/* Updated class */}
           <NewsCardList
             articles={articles}
             savedArticles={savedArticles}
@@ -104,7 +102,6 @@ function Main() {
           />
         </section>
       )}
-
       <About />
     </main>
   );
