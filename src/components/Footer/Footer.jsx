@@ -12,7 +12,7 @@ function Footer() {
         <p className="footer__copyright">
           <a
             href="https://newsapi.org/"
-            className="footer__link"
+            className="footer__link footer__link--copyright"
             target="_blank"
             rel="noreferrer"
           >
@@ -20,34 +20,40 @@ function Footer() {
           </a>
         </p>
         <nav className="footer__nav">
-          <a href="/" className="footer__link">
+          <a href="/" className="footer__link footer__link--home">
             Home
           </a>
           <a
             href="https://tripleten.com"
-            className="footer__link"
+            className="footer__link footer__link--tripleten"
             target="_blank"
             rel="noreferrer"
           >
             TripleTen
           </a>
-          {/* Use custom GitHub icon */}
           <a
             href="https://github.com"
-            className="footer__link"
+            className="footer__link footer__link--github"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={GitHubIcon} alt="GitHub" className="footer__icon" />
+            <img
+              src={GitHubIcon}
+              alt="GitHub"
+              className="footer__icon footer__icon--github"
+            />
           </a>
-          {/* Use custom Facebook icon */}
           <a
             href="https://facebook.com"
-            className="footer__link"
+            className="footer__link footer__link--facebook"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={FacebookIcon} alt="Facebook" className="footer__icon" />
+            <img
+              src={FacebookIcon}
+              alt="Facebook"
+              className="footer__icon footer__icon--facebook"
+            />
           </a>
         </nav>
       </div>

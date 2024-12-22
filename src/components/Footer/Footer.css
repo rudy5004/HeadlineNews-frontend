@@ -39,7 +39,7 @@
   margin-right: 40px; /* Default 40px gap between links */
 }
 
-.footer__link:last-child {
+.footer__link--last {
   margin-right: 0; /* Ensure no margin between Facebook and right side */
 }
 
@@ -50,10 +50,12 @@
 .footer__icon {
   width: 24px; /* Adjust the size of the icons */
   height: 24px;
+  vertical-align: middle; /* Ensure the icon aligns with text */
 }
 
-.footer__link img {
-  vertical-align: middle; /* Ensure the icon aligns with text */
+.footer__icon--github,
+.footer__icon--facebook {
+  /* Add any specific styles for individual icons */
 }
 
 /* Responsive adjustments for 320px page break */
@@ -65,7 +67,6 @@
 
   .footer__nav {
     margin-top: 16px; /* Add space between nav and copyright */
-    display: flex;
     flex-direction: column; /* Stack links vertically */
     align-items: center;
   }
@@ -77,8 +78,6 @@
   }
 
   .footer__icon {
-    width: 24px; /* Icon size remains the same */
-    height: 24px;
     margin-bottom: 10px; /* Space between the icons */
   }
 
