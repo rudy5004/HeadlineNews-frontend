@@ -1,0 +1,75 @@
+.search-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 608px; /* Set width to 608px */
+  height: 64px; /* Set height to 64px */
+  margin: 0 auto;
+  margin-bottom: 80px;
+  border-radius: 100px; /* Full rounded corners */
+  position: relative; /* Allow overlapping elements inside */
+}
+
+.search-form__input {
+  flex: 1;
+  height: 64px; /* Set the input height to 64px */
+  padding-left: 24px; /* Add padding to the left to move placeholder 24px */
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  border: none; /* Remove individual borders from input */
+  outline: none;
+  border-radius: 100px; /* Ensure input has rounded corners */
+}
+
+.search-form__button {
+  position: absolute;
+  right: 0;
+  width: 25%; /* Relative to parent container width */
+  max-width: 168px; /* Max width for larger screens */
+  min-width: 100px; /* Minimum width for smaller screens */
+  height: 67px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form__button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 720px) {
+  .search-form__input {
+    max-width: 448px;
+    max-height: 56px;
+  }
+  .search-form__button {
+    max-width: 160px;
+    max-height: 58px;
+    right: 66px;
+  }
+}
+
+@media (max-width: 320px) {
+  .search-form {
+    padding-left: 8px;
+  }
+  .search-form__input {
+    width: 272px;
+    padding-left: 16px;
+    position: absolute;
+    top: 32px;
+    right: 22px;
+  }
+  .search-form__button {
+    min-width: 288px;
+    max-height: 56px;
+    right: 22px;
+    bottom: -98px;
+  }
+}

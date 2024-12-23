@@ -1,0 +1,28 @@
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* Block styles */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+/* Element styles */
+.app__main {
+  flex: 1; /* Ensures the main content takes up available space */
+}
+
+.app__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

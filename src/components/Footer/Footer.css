@@ -1,0 +1,88 @@
+.footer {
+  background-color: #f5f5f5; /* Same background color as About section */
+  padding: 0 106px; /* Padding: top 32px, right 106px, bottom 26px, left 104px */
+  text-align: center;
+  max-height: 80px; /* Set the maximum height to 80px */
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* Ensure no wrapping */
+  max-width: 100%; /* Ensure full width */
+  margin: 0;
+}
+
+.footer__copyright {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #999;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.footer__nav {
+  display: flex;
+  align-items: center; /* Ensure alignment */
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.footer__link {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  margin-right: 40px; /* Default 40px gap between links */
+}
+
+.footer__link--last {
+  margin-right: 0; /* Ensure no margin between Facebook and right side */
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__icon {
+  width: 24px; /* Adjust the size of the icons */
+  height: 24px;
+  vertical-align: middle; /* Ensure the icon aligns with text */
+}
+
+.footer__icon--github,
+.footer__icon--facebook {
+  /* Add any specific styles for individual icons */
+}
+
+/* Responsive adjustments for 320px page break */
+@media (max-width: 320px) {
+  .footer__content {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Center text */
+  }
+
+  .footer__nav {
+    margin-top: 16px; /* Add space between nav and copyright */
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;
+  }
+
+  .footer__link {
+    margin-right: 0; /* Remove horizontal margin */
+    margin-bottom: 10px; /* Add vertical margin for space between links */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .footer__icon {
+    margin-bottom: 10px; /* Space between the icons */
+  }
+
+  .footer__copyright {
+    font-size: 12px; /* Adjust the copyright text size */
+    margin-bottom: 12px; /* Add spacing to separate from nav links */
+  }
+}

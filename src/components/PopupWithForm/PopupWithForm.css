@@ -1,0 +1,182 @@
+/* Popup container */
+.popup__container {
+  background-color: #fff;
+  padding: 34px 36px 28px 36px;
+  border-radius: 16px; /* Rounded corners */
+  width: 430px; /* Set the width to 430px */
+  height: auto; /* Adjust the height dynamically */
+  max-width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative;
+}
+
+/* Center the modal */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Background overlay */
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup_open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Close button */
+.popup__close {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+/* Close icon */
+.popup__close-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Title styling */
+.popup__title {
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  line-height: 28px;
+  margin-bottom: 22px;
+}
+
+/* Form input styling */
+.popup__input {
+  border: none;
+  font-family: "Inter", sans-serif;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  width: 100%;
+  margin-bottom: 31px; /* Consistent margin */
+}
+
+.popup__input:last-of-type {
+  margin-bottom: 39px; /* Custom margin for last input */
+}
+
+.popup__input::placeholder {
+  color: #ccc;
+}
+
+/* Error message styling */
+.popup__error {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.5px;
+  color: rgba(255, 0, 0, 1); /* Red color */
+  margin-top: 3px; /* 3px space between the input and error */
+  position: absolute; /* Positioned inside the input wrapper */
+  top: calc(100% + 3px); /* 3px below the input field */
+  left: 0; /* Align error message with input */
+}
+
+/* Label styling */
+.popup__label {
+  font-family: "Inter", sans-serif;
+  color: #007bff; /* Blue label color */
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.5px;
+  margin-bottom: 9px;
+}
+
+/* Separator and link styling */
+.popup__separator {
+  text-align: center;
+  font-size: 14px;
+  color: #333; /* Normal text color for "or" */
+  margin-top: 16px;
+  font-family: "Inter", sans-serif;
+  line-height: 17px;
+}
+
+.popup__link {
+  font-size: 14px;
+  color: #007bff; /* Only Sign up is a clickable link */
+  text-decoration: none;
+}
+
+.popup__link:hover {
+  text-decoration: underline;
+}
+
+/* Footer styling */
+.popup__footer {
+  margin-top: 20px; /* Space above footer */
+  text-align: center;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.popup__footer span {
+  color: #333; /* Normal text color */
+}
+
+.popup__footer .popup__link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.popup__footer .popup__link:hover {
+  text-decoration: underline;
+}
+
+/* Sign In button */
+.popup__submit {
+  padding: 20px;
+  background-color: #d9e2ec; /* Light gray background */
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  border-radius: 50px; /* Rounded button */
+  width: 100%;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.popup__submit:hover {
+  background-color: #007bff; /* Change to blue on hover */
+  color: #ffffff;
+}
+
+.popup__submit:disabled {
+  background-color: #d9e2ec; /* Keep gray background when disabled */
+  cursor: not-allowed;
+}
+
+/* Close button adjustments for smaller screens */
+@media screen and (max-width: 320px) {
+  .popup__close {
+    top: -41px;
+    right: 4px; /* Adjusted to keep the button inside the modal */
+  }
+}

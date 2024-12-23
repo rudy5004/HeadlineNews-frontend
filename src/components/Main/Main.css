@@ -1,0 +1,93 @@
+.main__background-section {
+  width: 100%;
+  height: 567px; /* Set the height of the background image section */
+  background-image: url("../../assets/BackgroundPic.svg"); /* Adjust path as needed */
+  background-size: cover; /* Cover the entire background */
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.main__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 567px; /* Explicitly set the height to match the background section */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Keeps the overall content centered */
+  color: white;
+  text-align: center;
+}
+
+.main__title-container {
+  width: 608px;
+  height: auto; /* Adjust height automatically */
+  margin-top: 160px; /* Maintain Figma specifications */
+  text-align: left; /* Align text inside this container to the left */
+}
+
+.main__title {
+  font-size: 60px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 60px; /* Reduce line-height slightly to remove extra space */
+  color: #fff;
+  white-space: pre-wrap;
+  margin: 0; /* Remove any default margin */
+  padding-bottom: 4px; /* Add padding-bottom to create precise spacing */
+  text-align: left;
+}
+
+.main__subtitle-container {
+  width: 100%; /* Ensure subtitle container spans the full width */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  text-align: center;
+}
+
+.main__subtitle {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 32px;
+  margin-bottom: 88px;
+  text-align: center;
+}
+
+.main__news-cards {
+  background-color: rgba(209, 210, 214, 1);
+}
+
+@media (max-width: 720px) {
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main__title-container {
+    width: 90%;
+    margin-top: 12px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 400; /* Fixed typo from 400px to 400 */
+  }
+
+  .main__subtitle {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 12px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
