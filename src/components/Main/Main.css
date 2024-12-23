@@ -59,6 +59,10 @@
   text-align: center;
 }
 
+.main__news-cards {
+  background-color: rgba(209, 210, 214, 1);
+}
+
 @media (max-width: 720px) {
   .main__title {
     font-size: 36px;
