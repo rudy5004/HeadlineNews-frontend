@@ -16,8 +16,15 @@
 /* Element: Logo */
 .saved-news-header__logo {
   margin-right: auto;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.saved-news-header__logo:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Element: Logo Image */
 .saved-news-header__logo-img {
   width: auto;
   height: auto;
@@ -60,6 +67,13 @@
   position: relative;
   padding-bottom: 3px;
   display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.saved-news-header__link:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  text-decoration: none; /* No underline */
 }
 
 /* Modifier: Active Link */
